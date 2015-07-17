@@ -1,3 +1,7 @@
+
+#OaA
+This repo is devoted to adding the overlap and add technique to GPU convolutions in CAFFE. The current bottleneck of this is cuFFT's planning phase. Efforts are being made to fix this and improve the performance of FFTs in CAFFE.
+
 # Caffe
 
 Caffe is a deep learning framework made with expression, speed, and modularity in mind.
