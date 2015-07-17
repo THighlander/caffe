@@ -1,6 +1,8 @@
 #include <climits>
 #include <vector>
 
+#include <cufft.h>
+
 #include "caffe/blob.hpp"
 #include "caffe/common.hpp"
 #include "caffe/syncedmem.hpp"
@@ -302,7 +304,7 @@ Dtype Blob<Dtype>::sumsq_diff() const {
     NO_GPU;
 #endif
   case SyncedMemory::UNINITIALIZED:
-    return 0;
+    return (Dtype)0;
   default:
     LOG(FATAL) << "Unknown SyncedMemory head state: " << data_->head();
   }
@@ -490,6 +492,5 @@ void Blob<Dtype>::ToProto(BlobProto* proto, bool write_diff) const {
 INSTANTIATE_CLASS(Blob);
 template class Blob<int>;
 template class Blob<unsigned int>;
-
 }  // namespace caffe
 

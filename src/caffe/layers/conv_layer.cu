@@ -1,4 +1,5 @@
 #include <vector>
+#include <stdio.h>
 
 #include "caffe/filler.hpp"
 #include "caffe/layer.hpp"
@@ -15,6 +16,7 @@ void ConvolutionLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
   for (int i = 0; i < bottom.size(); ++i) {
     const Dtype* bottom_data = bottom[i]->gpu_data();
     Dtype* top_data = top[i]->mutable_gpu_data();
+    //std::cin.ignore();
     for (int n = 0; n < this->num_; ++n) {
       this->forward_gpu_gemm(bottom_data + bottom[i]->offset(n), weight,
           top_data + top[i]->offset(n));

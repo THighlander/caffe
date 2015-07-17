@@ -1,4 +1,5 @@
 #include <vector>
+#include <stdio.h>
 
 #include "caffe/filler.hpp"
 #include "caffe/layer.hpp"

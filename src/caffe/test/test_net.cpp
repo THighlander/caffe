@@ -288,7 +288,6 @@ class NetTest : public MultiDeviceTest<TypeParam> {
       const bool force_backward = false, const bool bias_term = false,
       const Dtype blobs_lr_w1 = 1, const Dtype blobs_lr_b1 = 2,
       const Dtype blobs_lr_w2 = 1, const Dtype blobs_lr_b2 = 2) {
-    string bias_str = bias_term ? "true ":"false ";
     ostringstream proto;
     proto << "name: 'UnsharedWeightsNetwork' ";
     if (force_backward) {
@@ -315,7 +314,7 @@ class NetTest : public MultiDeviceTest<TypeParam> {
         "  type: 'InnerProduct' "
         "  inner_product_param { "
         "    num_output: 10 "
-        "    bias_term: " << bias_str <<
+        "    bias_term: " << bias_term <<
         "    weight_filler { "
         "      type: 'gaussian' "
         "      std: 10 "
@@ -341,7 +340,7 @@ class NetTest : public MultiDeviceTest<TypeParam> {
         "  type: 'InnerProduct' "
         "  inner_product_param { "
         "    num_output: 10 "
-        "    bias_term: " << bias_str <<
+        "    bias_term: " << bias_term <<
         "    weight_filler { "
         "      type: 'gaussian' "
         "      std: 10 "
@@ -700,11 +699,9 @@ class NetTest : public MultiDeviceTest<TypeParam> {
       "  bottom: 'innerproduct' "
       "  bottom: 'label_argmax' ";
     if (test_skip_true)
-      proto += "  propagate_down: true "
-               "  propagate_down: false ";
+      proto += "  propagate_down: [true, false] ";
     else
-      proto += "  propagate_down: true "
-               "  propagate_down: true ";
+      proto += "  propagate_down: [true, true] ";
     proto +=
       "  top: 'cross_entropy_loss' "
       "  type: 'SigmoidCrossEntropyLoss' "

@@ -5,6 +5,8 @@
 #include <utility>
 #include <vector>
 
+#include <cufft.h>
+
 #include "caffe/blob.hpp"
 #include "caffe/common.hpp"
 #include "caffe/common_layers.hpp"
@@ -13,6 +15,8 @@
 #include "caffe/loss_layers.hpp"
 #include "caffe/neuron_layers.hpp"
 #include "caffe/proto/caffe.pb.h"
+
+#include "thrust/device_vector.h"
 
 namespace caffe {
 
@@ -33,6 +37,9 @@ class BaseConvolutionLayer : public Layer<Dtype> {
   virtual inline int MinBottomBlobs() const { return 1; }
   virtual inline int MinTopBlobs() const { return 1; }
   virtual inline bool EqualNumBottomTopBlobs() const { return true; }
+
+  //added deconstructor to clean up cuFFT plans
+  virtual ~BaseConvolutionLayer();
 
  protected:
   // Helper functions that abstract away the column buffer and gemm arguments.
@@ -56,6 +63,14 @@ class BaseConvolutionLayer : public Layer<Dtype> {
   void weight_gpu_gemm(const Dtype* col_input, const Dtype* output, Dtype*
       weights);
   void backward_gpu_bias(Dtype* bias, const Dtype* input);
+
+  //Add FFT plans
+  cufftHandle planR2CInDepth_ , planR2CNumK_, planC2Rout_;
+  int fftSize_;
+  thrust::device_vector<cufftComplex> im_pad_buff_Complex;
+  thrust::device_vector<cufftComplex> w_pad_buff_Complex;
+  thrust::device_vector<cufftComplex> out_pad_buff_Complex;
+
 #endif
 
   // reverse_dimensions should return true iff we are implementing deconv, so
@@ -77,7 +92,16 @@ class BaseConvolutionLayer : public Layer<Dtype> {
   bool is_1x1_;
 
  private:
-  // wrap im2col/col2im so we don't have to remember the (long) argument lists
+  // wrap im2col/col2im/pad so we don't have to remember the (long) argument lists
+   inline void conv_pad_im_gpu(const Dtype* data, float* col_buff) {
+    pad_gpu(data, conv_in_channels_*fftSize_*fftSize_, conv_in_height_, conv_in_width_,
+       fftSize_-conv_in_height_, fftSize_-conv_in_width_, col_buff, false);
+  }
+  inline void conv_pad_w_gpu(const Dtype* data, float* col_buff) {
+    pad_gpu(data, conv_in_channels_*conv_out_channels_*fftSize_*fftSize_, kernel_h_, kernel_w_,
+       fftSize_-kernel_h_, fftSize_-kernel_w_, col_buff, true);
+  }
+
   inline void conv_im2col_cpu(const Dtype* data, Dtype* col_buff) {
     im2col_cpu(data, conv_in_channels_, conv_in_height_, conv_in_width_,
         kernel_h_, kernel_w_, pad_h_, pad_w_, stride_h_, stride_w_, col_buff);
@@ -108,6 +132,9 @@ class BaseConvolutionLayer : public Layer<Dtype> {
   int output_offset_;
 
   Blob<Dtype> col_buffer_;
+  Blob<float> im_pad_buffer_;
+  Blob<float> w_pad_buffer_;
+  Blob<float> o_pad_buffer_;
   Blob<Dtype> bias_multiplier_;
 };
 

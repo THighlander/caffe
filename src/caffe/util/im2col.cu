@@ -40,6 +40,72 @@ __global__ void im2col_gpu_kernel(const int n, const Dtype* data_im,
 }
 
 template <typename Dtype>
+__global__ void pad_gpu_kernel(const int n, const Dtype* data_im,
+    const int height, const int width,const int pad_h, 
+    const int pad_w, float* data_col, bool reverse)
+{
+  float* data_col_ptr = data_col;
+  const Dtype* data_im_ptr = data_im;
+  int i,j,check,channel;
+  int size = width+pad_w;
+
+  CUDA_KERNEL_LOOP(index, n) {
+    j = index%size;
+    i = index/size;
+    check = i%size;
+    channel = index/(size*size);
+
+
+
+    if(reverse)
+      data_col_ptr[i * (width+pad_h) + j] = (check < height && j < width) ? data_im_ptr[(channel*width*height)+((height-check-1) * (width)) + (width-j-1)] : 0;
+    else
+      data_col_ptr[i * (width+pad_h) + j] = (check < height && j < width) ? data_im_ptr[(channel*width*height) + (check * width) + j] : 0;
+        //else
+          //data_col_ptr[i * (width+pad_h) + j] = (check < height && j < width) ? data_im_ptr[(channel*size*size)+((height-check-1) * (width)) + (width-j-1)] : 0;
+
+/*
+    float* data_col_ptr = data_col;
+    data_col_ptr += (index*(height+pad_w)*(height+pad_w));
+    const Dtype* data_im_ptr = data_im;
+    data_im_ptr += (index*(height)*(height));
+
+    for (int i = 0; i < height+pad_w; ++i) {
+      for (int j = 0; j < width+pad_h; ++j) {
+        if(!reverse)
+          data_col_ptr[i * (width+pad_h) + j] = (i < height && j < width) ? data_im_ptr[i * width + j] : 0;
+        else
+          data_col_ptr[i * (width+pad_h) + j] = (i < height && j < width) ? data_im_ptr[((height-i-1) * (width)) + (width-j-1)] : 0;
+      }
+    }
+    */
+  }
+}
+
+template <typename Dtype>
+void pad_gpu(const Dtype* data_im, const int channels,
+    const int height, const int width,const int pad_h, 
+    const int pad_w, float* data_col, bool reverse)
+{
+  int num_kernels = channels;
+  //printf("Pre Kernel Width: %f \n", (float)width);
+  pad_gpu_kernel<Dtype><<<CAFFE_GET_BLOCKS(num_kernels),
+                           CAFFE_CUDA_NUM_THREADS>>>(
+    num_kernels, data_im, height, width, pad_h,
+    pad_w, data_col, reverse);
+  CUDA_POST_KERNEL_CHECK;
+}
+
+// Explicit instantiation
+template void pad_gpu<float>(const float* data_im, const int channels,
+    const int height, const int width,const int pad_h, 
+    const int pad_w, float* data_col, bool reverse);
+template void pad_gpu<double>(const double* data_im, const int channels,
+    const int height, const int width,const int pad_h, 
+    const int pad_w, float* data_col, bool reverse);
+
+
+template <typename Dtype>
 void im2col_gpu(const Dtype* data_im, const int channels,
     const int height, const int width, const int kernel_h, const int kernel_w,
     const int pad_h, const int pad_w,
@@ -140,5 +206,6 @@ template void col2im_gpu<double>(const double* data_col, const int channels,
     const int height, const int width, const int patch_h, const int patch_w,
     const int pad_h, const int pad_w, const int stride_h,
     const int stride_w, double* data_im);
+
 
 }  // namespace caffe

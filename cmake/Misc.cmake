@@ -1,4 +1,4 @@
-# ---[ Configuration types
+# ---[ Configurations types
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Possible configurations" FORCE)
 mark_as_advanced(CMAKE_CONFIGURATION_TYPES)
 

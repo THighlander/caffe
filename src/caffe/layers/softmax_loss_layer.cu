@@ -61,6 +61,15 @@ void SoftmaxWithLossLayer<Dtype>::Forward_gpu(
   if (top.size() == 2) {
     top[1]->ShareData(prob_);
   }
+
+  /*
+  Dtype* test = prob_.mutable_cpu_data();;
+
+  for (int i = 0; i < dim; ++i)
+  {
+    printf("Prob %d: %f\n",i,test[i]);
+  }
+  */
 }
 
 template <typename Dtype>
