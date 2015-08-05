@@ -13,19 +13,36 @@ template <typename Dtype>
 void ConvolutionLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top) {
   const Dtype* weight = this->blobs_[0]->gpu_data();
-  for (int i = 0; i < bottom.size(); ++i) {
+  //std::cout << "Bottom Size " << bottom.size() << std::endl;
+  for (int i = 0; i < bottom.size(); ++i) 
+  {
     const Dtype* bottom_data = bottom[i]->gpu_data();
     Dtype* top_data = top[i]->mutable_gpu_data();
     //std::cin.ignore();
+    //std::cout << "num_ " << this->num_ << std::endl;
     for (int n = 0; n < this->num_; ++n) {
       this->forward_gpu_gemm(bottom_data + bottom[i]->offset(n), weight,
           top_data + top[i]->offset(n));
       if (this->bias_term_) {
         const Dtype* bias = this->blobs_[1]->gpu_data();
-        this->forward_gpu_bias(top_data + top[i]->offset(n), bias);
+        //this->forward_gpu_bias(top_data + top[i]->offset(n), bias);
       }
     }
+    const Dtype* test = top[i]->cpu_data();
+
+    /*
+    for (int j = 0; j < top[i]->count() ; ++j)
+    {
+      std::cout << test[j] << std::endl;
+    }
+    std::cout << std::endl;
+    std::cout << std::endl;
+    //std::cin.ignore();
+    //std::cin.ignore();
+    */
   }
+  //Clean the cuFFT plans used for the forward propagation.
+  this->cleanConvolution();
 }
 
 template <typename Dtype>

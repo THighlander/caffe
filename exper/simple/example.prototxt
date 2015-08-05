@@ -43,28 +43,3 @@ layer {
   }
   }
 
-
-  layer {
-  name: "conv2"
-  type: "Convolution"
-  bottom: "conv1"
-  top: "conv2"
-  param {
-    lr_mult: 1
-  }
-  param {
-    lr_mult: 2
-  }
-  convolution_param {
-    num_output: 1
-    kernel_size: 2
-    stride: 1
-    weight_filler {
-      type: "constant"
-    }
-    bias_filler {
-      type: "constant"
-    }
-  }
-
-}

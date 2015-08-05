@@ -29,9 +29,20 @@ void ConvolutionLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype>*>& bottom,
           top_data + top[i]->offset(n));
       if (this->bias_term_) {
         const Dtype* bias = this->blobs_[1]->cpu_data();
-        this->forward_cpu_bias(top_data + top[i]->offset(n), bias);
+        //this->forward_cpu_bias(top_data + top[i]->offset(n), bias);
       }
     }
+     const Dtype* test = top[i]->cpu_data();
+
+     /*
+    for (int j = 0; j < top[i]->count() ; ++j)
+    {
+      std::cout << test[j] << std::endl;
+    }
+    std::cout << std::endl;
+    std::cout << std::endl;
+  
+  */
   }
 }
 

@@ -17,7 +17,7 @@ __global__ void hadamard_forward_with_sum(int n, cufftComplex* image, cufftCompl
   int index = 0;
   int which_out_channel = 0;
   int k_index, im_index;
-
+  //printf("Hadamard");
 
   CUDA_KERNEL_LOOP(j, n)
   {
@@ -29,8 +29,8 @@ __global__ void hadamard_forward_with_sum(int n, cufftComplex* image, cufftCompl
       k_index = index+(in*fftSize*fftSize) + which_out_channel*in_channels*fftSize*fftSize;
       im_index = index+(in*fftSize*fftSize);
 
-      output[j].x += (image[im_index].x * kernel[k_index].x - image[im_index].y * kernel[k_index].y);
-      output[j].y += (image[im_index].x * kernel[k_index].y + image[im_index].y * kernel[k_index].x);
+      output[j].x += ((image[im_index].x * kernel[k_index].x) - (image[im_index].y * kernel[k_index].y));
+      output[j].y += ((image[im_index].x * kernel[k_index].y) + (image[im_index].y * kernel[k_index].x));
     }
   }
 }
@@ -38,6 +38,7 @@ __global__ void hadamard_forward_with_sum(int n, cufftComplex* image, cufftCompl
 template <typename Dtype>
 __global__ void crop_ouput(int n, float* fft_output, Dtype* output, int length, int fftSize, int offset, int out_channels)
 {
+  //printf("crop");
   fft_output += offset*fftSize;
   int size = length * length;
   CUDA_KERNEL_LOOP(index, n)
@@ -202,25 +203,33 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
 
   #ifndef CPU_ONLY
 
-    fftSize_ = conv_in_height_ + kernel_h_ - 1;
-    int dims[2] = {fftSize_, fftSize_};
+  //This currently breaks the testing I believe for CPU, because CPU_ONLY = false but CPU calculations are done.
 
-    
-    cufftPlanMany(&planR2CInDepth_, 2, dims,
-        dims, 1, fftSize_*fftSize_, //in dims
-        dims, 1, fftSize_*fftSize_, //out dims
-        CUFFT_R2C, conv_in_channels_);
 
-    cufftPlanMany(&planR2CNumK_, 2, dims,
-        dims, 1, fftSize_*fftSize_, //in dims
-        dims, 1, fftSize_*fftSize_, //out dims
-        CUFFT_R2C, conv_out_channels_*conv_in_channels_);
-    
-    cufftPlanMany(&planC2Rout_, 2, dims,
-        dims, 1, fftSize_*fftSize_, //in dims
-        dims, 1, fftSize_*fftSize_, //out dims
-        CUFFT_C2R, conv_out_channels_);
+
+  fftSize_ = conv_in_height_ + kernel_h_ - 1;
+
+  //std::cout <<  "kernel_dim_ " << kernel_dim_ << std::endl;
+  int dims[2] = {fftSize_, fftSize_};
+
+  //std::cout << "This is when the plans are created!" << std::endl;
+
+
+  cufftPlanMany(&planR2CInDepth_, 2, dims,
+      dims, 1, fftSize_*fftSize_, //in dims
+      dims, 1, fftSize_*fftSize_, //out dims
+      CUFFT_R2C, conv_in_channels_);
+
+  cufftPlanMany(&planR2CNumK_, 2, dims,
+      dims, 1, fftSize_*fftSize_, //in dims
+      dims, 1, fftSize_*fftSize_, //out dims
+      CUFFT_R2C, conv_out_channels_*conv_in_channels_);
   
+  cufftPlanMany(&planC2Rout_, 2, dims,
+      dims, 1, fftSize_*fftSize_, //in dims
+      dims, 1, fftSize_*fftSize_, //out dims
+      CUFFT_C2R, conv_out_channels_);
+
 
   //Create the device vectors for the 
   im_pad_buff_Complex = thrust::device_vector<cufftComplex>(fftSize_*fftSize_*conv_in_channels_);
@@ -246,12 +255,21 @@ void BaseConvolutionLayer<Dtype>::forward_cpu_gemm(const Dtype* input,
     }
     col_buff = col_buffer_.cpu_data();
   }
+  
+  //std::cout << sizeof(output)/sizeof(Dtype)<< std::endl;
+  
+  //for (int i = 0; i < sizeof(output)/sizeof(Dtype); ++i)
+  //{
+    //std::cout << output[i] << std::endl;
+  //}
+  
   for (int g = 0; g < group_; ++g) {
     caffe_cpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, conv_out_channels_ /
         group_, conv_out_spatial_dim_, kernel_dim_ / group_,
         (Dtype)1., weights + weight_offset_ * g, col_buff + col_offset_ * g,
         (Dtype)0., output + output_offset_ * g);
   }
+
 }
 
 template <typename Dtype>
@@ -261,6 +279,11 @@ void BaseConvolutionLayer<Dtype>::forward_cpu_bias(Dtype* output,
   caffe_cpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, num_output_,
       height_out_ * width_out_, 1, (Dtype)1., bias, bias_multiplier_.cpu_data(),
       (Dtype)1., output);
+
+  //for teting purposes only
+  cufftDestroy(planR2CInDepth_);
+  cufftDestroy(planR2CNumK_);
+  cufftDestroy(planC2Rout_);
 }
 
 template <typename Dtype>
@@ -311,6 +334,14 @@ template <typename Dtype>
 void BaseConvolutionLayer<Dtype>::forward_gpu_gemm(const Dtype* input,
     const Dtype* weights, Dtype* output, bool skip_im2col) {
 
+//Test for flushing errors
+cufftComplex complexZero;
+complexZero.x = 0;
+complexZero.y = 0;
+
+//Initializes the output vector with 0's so that maybe we can += in CUDA for loops
+thrust::fill(out_pad_buff_Complex.begin(), out_pad_buff_Complex.end(), complexZero);
+
 
 //Pad the input image
 cufftReal* im_pad_buff;
@@ -337,24 +368,23 @@ hadamard_forward_with_sum<<<CAFFE_GET_BLOCKS(num_kernels),
 
 //Inverse FFT 
 cufftExecC2R(planC2Rout_, thrust::raw_pointer_cast(&out_pad_buff_Complex[0]), o_pad_buffer_.mutable_gpu_data());
-
 float* o_pad_buff = o_pad_buffer_.mutable_gpu_data();
 
-
+/*
 float* test = o_pad_buffer_.mutable_cpu_data();
-for (int k = 0; k < conv_in_channels_*conv_out_channels_; ++k)
+for (int k = 0; k < conv_out_channels_; ++k)
 {
   for (int i = 0; i < fftSize_; ++i)
   {
     for (int j = 0; j < fftSize_; ++j)
     {
-      std::cout << test[(k*fftSize_ * fftSize_) + i*fftSize_ +j]/(fftSize_*fftSize_) << " ";
+      std::cout << test[(k*fftSize_ * fftSize_) + i*fftSize_ +j]/((float)fftSize_*fftSize_) << " ";
     }
     std::cout << std::endl;
   }
   std::cout << std::endl;
 }
-
+*/
 
 //Need crop the answer and put it at the start of the output blob
 int extraInfo = (fftSize_- height_out_)/2;
@@ -364,10 +394,32 @@ crop_ouput<<<CAFFE_GET_BLOCKS(num_kernels), CAFFE_CUDA_NUM_THREADS>>>
                           (num_kernels, o_pad_buff, output, height_out_, fftSize_, extraInfo,
                             conv_out_channels_);
 
-cufftDestroy(planR2CInDepth_);
-cufftDestroy(planR2CNumK_);
-cufftDestroy(planC2Rout_);
+//cufftDestroy(planR2CInDepth_);
+//cufftDestroy(planR2CNumK_);
+//cufftDestroy(planC2Rout_);
 
+//Dtype* test(sizeof(output)/sizeof(Dtype));
+//test = thrust::copy_n(output.begin(), sizeof(output)/sizeof(Dtype), test.begin());
+//std::cout << sizeof(output)/sizeof(Dtype) << std::endl;
+
+//for (int i = 0; i < sizeof(output)/sizeof(Dtype); ++i)
+  //{
+    //std::cout << test[i] << std::endl;
+  //}
+/*
+for (int k = 0; k < conv_out_channels_; ++k)
+{
+  for (int i = 0; i < height_out_; ++i)
+  {
+    for (int j = 0; j < width_out_; ++j)
+    {
+      //std::cout << output[0] << " ";//[i*width_out_ +j] << " ";
+    }
+    std::cout << std::endl;
+  }
+  std::cout << std::endl;
+}
+*/
 /*
   const Dtype* col_buff = input;
   if (!is_1x1_) {
@@ -383,6 +435,14 @@ cufftDestroy(planC2Rout_);
         (Dtype)0., output + output_offset_ * g);
   }
   */
+}
+
+template <typename Dtype>
+void BaseConvolutionLayer<Dtype>::cleanConvolution()
+{
+  cufftDestroy(planR2CInDepth_);
+  cufftDestroy(planR2CNumK_);
+  cufftDestroy(planC2Rout_);
 }
 
 template <typename Dtype>
