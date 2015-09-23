@@ -1,6 +1,6 @@
 
 #OaA
-This repo is devoted to adding the overlap and add technique to GPU convolutions in CAFFE. The current bottleneck of this is cuFFT's planning phase. Efforts are being made to fix this and improve the performance of FFTs in CAFFE.
+This repo is devoted to adding the overlap and add technique to GPU convolutions in CAFFE. The code will be available to the public very shortly (Estimated no later than November 2015). Please see our paper for more information on [OaA](http://bmvc2015.swansea.ac.uk/proceedings/papers/paper160/paper160.pdf).
 
 # Caffe
 
