@@ -87,7 +87,7 @@ const char* curandGetErrorString(curandStatus_t error);
 #if __CUDA_ARCH__ >= 200
     const int CAFFE_CUDA_NUM_THREADS = 1024;
 #else
-    const int CAFFE_CUDA_NUM_THREADS = 512;
+    const int CAFFE_CUDA_NUM_THREADS = 1024;
 #endif
 
 // CUDA: number of blocks for threads.

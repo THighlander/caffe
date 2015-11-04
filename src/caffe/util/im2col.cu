@@ -40,69 +40,65 @@ __global__ void im2col_gpu_kernel(const int n, const Dtype* data_im,
 }
 
 template <typename Dtype>
-__global__ void pad_gpu_kernel(const int n, const Dtype* data_im,
+__global__ void pad_gpu_kernel(const int n, const Dtype* data_im, const int im_size,
     const int height, const int width,const int pad_h, 
-    const int pad_w, float* data_col, bool reverse)
+    const int pad_w, int numDivisions, float* data_col, bool reverse)
 {
   float* data_col_ptr = data_col;
   const Dtype* data_im_ptr = data_im;
   int i,j,check,channel;
   int size = width+pad_w;
+  int xDivision, yDivision;
 
-  CUDA_KERNEL_LOOP(index, n) {
+  CUDA_KERNEL_LOOP(index, n) 
+  {
     j = index%size;
     i = index/size;
+  
     check = i%size;
-    channel = index/(size*size);
 
+    xDivision = (index/(size*size))%numDivisions;
+    yDivision = (index/(size*size*numDivisions))%numDivisions;
 
+    channel = index/(size*size*numDivisions*numDivisions);
 
+    //multiply the x Division and y Division by the width in order to split correctly
+
+    //reverse is only implemeneted to not have divisions
     if(reverse)
-      data_col_ptr[i * (width+pad_h) + j] = (check < height && j < width) ? data_im_ptr[(channel*width*height)+((height-check-1) * (width)) + (width-j-1)] : 0;
+      data_col_ptr[i*(size) + j] = (check < height && j < width && (check+(yDivision*width)) < im_size && j+(xDivision*height) < im_size) ? 
+        data_im_ptr[(channel*im_size*im_size) + ((im_size-check-1)*width) + im_size-j-1] : 0.0;
     else
-      data_col_ptr[i * (width+pad_h) + j] = (check < height && j < width) ? data_im_ptr[(channel*width*height) + (check * width) + j] : 0;
-        //else
-          //data_col_ptr[i * (width+pad_h) + j] = (check < height && j < width) ? data_im_ptr[(channel*size*size)+((height-check-1) * (width)) + (width-j-1)] : 0;
-
-/*
-    float* data_col_ptr = data_col;
-    data_col_ptr += (index*(height+pad_w)*(height+pad_w));
-    const Dtype* data_im_ptr = data_im;
-    data_im_ptr += (index*(height)*(height));
-
-    for (int i = 0; i < height+pad_w; ++i) {
-      for (int j = 0; j < width+pad_h; ++j) {
-        if(!reverse)
-          data_col_ptr[i * (width+pad_h) + j] = (i < height && j < width) ? data_im_ptr[i * width + j] : 0;
-        else
-          data_col_ptr[i * (width+pad_h) + j] = (i < height && j < width) ? data_im_ptr[((height-i-1) * (width)) + (width-j-1)] : 0;
-      }
-    }
-    */
+      data_col_ptr[i*(size) + j] = (check < height && j < width && (check+(yDivision*width)) < im_size && j+(xDivision*height) < im_size) ? 
+        data_im_ptr[(channel*im_size*im_size) + ((check+(yDivision*width))  * im_size) + j+(xDivision*height)] : 0.0;
+      //data_im_ptr[(channel*im_size*im_size) + (check * im_size) + j] : 99.0;
   }
 }
 
 template <typename Dtype>
-void pad_gpu(const Dtype* data_im, const int channels,
+void pad_gpu(const Dtype* data_im, const int channels, const int im_size,
     const int height, const int width,const int pad_h, 
-    const int pad_w, float* data_col, bool reverse)
+    const int pad_w, int numD, float* data_col, bool reverse)
 {
   int num_kernels = channels;
-  //printf("Pre Kernel Width: %f \n", (float)width);
+  //do all plading in different streams
+  //cudaStream_t stream;
+  //cudaStreamCreate(&stream);
+
   pad_gpu_kernel<Dtype><<<CAFFE_GET_BLOCKS(num_kernels),
-                           CAFFE_CUDA_NUM_THREADS>>>(
-    num_kernels, data_im, height, width, pad_h,
-    pad_w, data_col, reverse);
-  CUDA_POST_KERNEL_CHECK;
+                             CAFFE_CUDA_NUM_THREADS>>>(
+    num_kernels, data_im, im_size, height, width, pad_h,
+    pad_w, numD, data_col, reverse);
+  //CUDA_POST_KERNEL_CHECK;
 }
 
 // Explicit instantiation
-template void pad_gpu<float>(const float* data_im, const int channels,
+template void pad_gpu<float>(const float* data_im, const int im_size, const int channels,
     const int height, const int width,const int pad_h, 
-    const int pad_w, float* data_col, bool reverse);
-template void pad_gpu<double>(const double* data_im, const int channels,
+    const int pad_w, int numD, float* data_col, bool reverse);
+template void pad_gpu<double>(const double* data_im, const int im_size, const int channels,
     const int height, const int width,const int pad_h, 
-    const int pad_w, float* data_col, bool reverse);
+    const int pad_w, int numD, float* data_col, bool reverse);
 
 
 template <typename Dtype>

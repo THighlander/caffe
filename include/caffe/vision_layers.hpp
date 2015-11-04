@@ -18,6 +18,7 @@
 
 #include "thrust/device_vector.h"
 
+
 namespace caffe {
 
 /**
@@ -33,14 +34,10 @@ class BaseConvolutionLayer : public Layer<Dtype> {
       const vector<Blob<Dtype>*>& top);
   virtual void Reshape(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top);
-  virtual void cleanConvolution();
-
+  
   virtual inline int MinBottomBlobs() const { return 1; }
   virtual inline int MinTopBlobs() const { return 1; }
   virtual inline bool EqualNumBottomTopBlobs() const { return true; }
-
-  //added deconstructor to clean up cuFFT plans
-  virtual ~BaseConvolutionLayer();
 
  protected:
   // Helper functions that abstract away the column buffer and gemm arguments.
@@ -58,6 +55,8 @@ class BaseConvolutionLayer : public Layer<Dtype> {
 #ifndef CPU_ONLY
   void forward_gpu_gemm(const Dtype* col_input, const Dtype* weights,
       Dtype* output, bool skip_im2col = false);
+  void forward_gpu_gemm_oaa(const Dtype* col_input, const Dtype* weights,
+      Dtype* output, bool skip_im2col = false);
   void forward_gpu_bias(Dtype* output, const Dtype* bias);
   void backward_gpu_gemm(const Dtype* input, const Dtype* weights,
       Dtype* col_output);
@@ -66,13 +65,21 @@ class BaseConvolutionLayer : public Layer<Dtype> {
   void backward_gpu_bias(Dtype* bias, const Dtype* input);
 
   //Add FFT plans
-  cufftHandle planR2CInDepth_ , planR2CNumK_, planC2Rout_;
+  //cufftHandle planR2CInDepth_ , planR2CNumK_, planC2Rout_;
   int fftSize_;
-  thrust::device_vector<cufftComplex> im_pad_buff_Complex;
-  thrust::device_vector<cufftComplex> w_pad_buff_Complex;
-  thrust::device_vector<cufftComplex> out_pad_buff_Complex;
+  thrust::device_vector<float> im_pad_buff_Complex;
+  thrust::device_vector<float> w_pad_buff_Complex;
+  thrust::device_vector<float> out_pad_buff_Complex;
+  thrust::device_vector<float> out_before_reduction;
+
+  thrust::device_vector<float> im_Complex;
+  thrust::device_vector<float> w_Complex;
+  thrust::device_vector<float> o_Complex;
+
+  cudaStream_t in_stream, w_stream;
 
 #endif
+
 
   // reverse_dimensions should return true iff we are implementing deconv, so
   // that conv helpers know which dimensions are which.
@@ -94,13 +101,13 @@ class BaseConvolutionLayer : public Layer<Dtype> {
 
  private:
   // wrap im2col/col2im/pad so we don't have to remember the (long) argument lists
-   inline void conv_pad_im_gpu(const Dtype* data, float* col_buff) {
-    pad_gpu(data, conv_in_channels_*fftSize_*fftSize_, conv_in_height_, conv_in_width_,
-       fftSize_-conv_in_height_, fftSize_-conv_in_width_, col_buff, false);
+   inline void conv_pad_im_gpu(const Dtype* data, int num_divisions, float* col_buff) {
+    pad_gpu(data, conv_in_channels_*num_divisions*num_divisions*fftSize_*fftSize_, conv_in_height_, kernel_h_, kernel_w_,
+       fftSize_ - kernel_h_, fftSize_ - kernel_w_, num_divisions, col_buff, false);
   }
   inline void conv_pad_w_gpu(const Dtype* data, float* col_buff) {
-    pad_gpu(data, conv_in_channels_*conv_out_channels_*fftSize_*fftSize_, kernel_h_, kernel_w_,
-       fftSize_-kernel_h_, fftSize_-kernel_w_, col_buff, true);
+    pad_gpu(data, conv_in_channels_*conv_out_channels_*fftSize_*fftSize_, kernel_h_, kernel_h_, kernel_w_,
+       fftSize_-kernel_h_, fftSize_-kernel_w_, 1, col_buff, true);
   }
 
   inline void conv_im2col_cpu(const Dtype* data, Dtype* col_buff) {
@@ -131,6 +138,7 @@ class BaseConvolutionLayer : public Layer<Dtype> {
   int weight_offset_;
   int col_offset_;
   int output_offset_;
+  int number_of_divisions_;
 
   Blob<Dtype> col_buffer_;
   Blob<float> im_pad_buffer_;
@@ -190,6 +198,57 @@ class ConvolutionLayer : public BaseConvolutionLayer<Dtype> {
       : BaseConvolutionLayer<Dtype>(param) {}
 
   virtual inline const char* type() const { return "Convolution"; }
+
+ protected:
+  virtual void Forward_cpu(const vector<Blob<Dtype>*>& bottom,
+      const vector<Blob<Dtype>*>& top);
+  virtual void Forward_gpu(const vector<Blob<Dtype>*>& bottom,
+      const vector<Blob<Dtype>*>& top);
+  virtual void Backward_cpu(const vector<Blob<Dtype>*>& top,
+      const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom);
+  virtual void Backward_gpu(const vector<Blob<Dtype>*>& top,
+      const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom);
+  virtual inline bool reverse_dimensions() { return false; }
+  virtual void compute_output_shape();
+};
+
+//New Convolutional OaA Layer All comments are just copied and pasted from orginal conv
+
+template <typename Dtype>
+class ConvolutionLayerOaA : public BaseConvolutionLayer<Dtype> {
+ public:
+  /**
+   * @param param provides ConvolutionParameter convolution_param,
+   *    with ConvolutionLayer options:
+   *  - num_output. The number of filters.
+   *  - kernel_size / kernel_h / kernel_w. The filter dimensions, given by
+   *  kernel_size for square filters or kernel_h and kernel_w for rectangular
+   *  filters.
+   *  - stride / stride_h / stride_w (\b optional, default 1). The filter
+   *  stride, given by stride_size for equal dimensions or stride_h and stride_w
+   *  for different strides. By default the convolution is dense with stride 1.
+   *  - pad / pad_h / pad_w (\b optional, default 0). The zero-padding for
+   *  convolution, given by pad for equal dimensions or pad_h and pad_w for
+   *  different padding. Input padding is computed implicitly instead of
+   *  actually padding.
+   *  - group (\b optional, default 1). The number of filter groups. Group
+   *  convolution is a method for reducing parameterization by selectively
+   *  connecting input and output channels. The input and output channel dimensions must be divisible
+   *  by the number of groups. For group @f$ \geq 1 @f$, the
+   *  convolutional filters' input and output channels are separated s.t. each
+   *  group takes 1 / group of the input channels and makes 1 / group of the
+   *  output channels. Concretely 4 input channels, 8 output channels, and
+   *  2 groups separate input channels 1-2 and output channels 1-4 into the
+   *  first group and input channels 3-4 and output channels 5-8 into the second
+   *  group.
+   *  - bias_term (\b optional, default true). Whether to have a bias.
+   *  - engine: convolution has CAFFE (matrix multiplication) and CUDNN (library
+   *    kernels + stream parallelism) engines.
+   */
+  explicit ConvolutionLayerOaA(const LayerParameter& param)
+      : BaseConvolutionLayer<Dtype>(param) {}
+
+  virtual inline const char* type() const { return "ConvolutionOaA"; }
 
  protected:
   virtual void Forward_cpu(const vector<Blob<Dtype>*>& bottom,

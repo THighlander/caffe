@@ -1,0 +1,1533 @@
+CXX src/caffe/fft/FBFFTHost.cpp
+In file included from ./include/caffe/cuda/fbfft/FBFFT.h:7:0,
+                 from ./include/caffe/fft/CuFFTWrapper.cuh:5,
+                 from src/caffe/fft/FBFFTHost.cpp:9:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:154:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:203:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:470:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:638:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:640:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:648:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:682:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:709:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:711:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:732:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:754:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:760:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:766:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:852:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:854:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:879:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:881:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+In file included from ./include/caffe/cuda/fbfft/FBFFTCommon.cuh:900:0,
+                 from ./include/caffe/cuda/fbfft/FBFFT.h:7,
+                 from ./include/caffe/fft/CuFFTWrapper.cuh:5,
+                 from src/caffe/fft/FBFFTHost.cpp:9:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:93:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:102:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:137:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:146:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:153:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:159:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:181:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:191:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:203:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:244:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:247:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:268:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:275:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:277:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:282:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:290:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:293:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:337:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:340:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:366:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:373:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:375:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:380:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:392:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:395:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+In file included from ./include/caffe/cuda/fbfft/FBFFTCommon.cuh:901:0,
+                 from ./include/caffe/cuda/fbfft/FBFFT.h:7,
+                 from ./include/caffe/fft/CuFFTWrapper.cuh:5,
+                 from src/caffe/fft/FBFFTHost.cpp:9:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:276:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:278:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:301:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:308:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:310:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:315:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:329:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:332:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:368:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:384:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:387:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:411:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:418:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:420:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:425:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:441:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:444:0: warning: ignoring #pragma unroll  [-Wunknown-pragmas]
+ #pragma unroll
+ ^
+In file included from ./include/caffe/cuda/fbfft/FBFFTCommon.cuh:7:0,
+                 from ./include/caffe/cuda/fbfft/FBFFT.h:7,
+                 from ./include/caffe/fft/CuFFTWrapper.cuh:5,
+                 from src/caffe/fft/FBFFTHost.cpp:9:
+./include/caffe/cuda/CudaUtils.cuh: In function ‘int facebook::cuda::getWarpId()’:
+./include/caffe/cuda/CudaUtils.cuh:22:11: error: ‘threadIdx’ was not declared in this scope
+   return (threadIdx.z * blockDim.y * blockDim.x +
+           ^
+./include/caffe/cuda/CudaUtils.cuh:22:25: error: ‘blockDim’ was not declared in this scope
+   return (threadIdx.z * blockDim.y * blockDim.x +
+                         ^
+./include/caffe/cuda/CudaUtils.cuh:24:26: error: ‘warpSize’ was not declared in this scope
+           threadIdx.x) / warpSize;
+                          ^
+./include/caffe/cuda/CudaUtils.cuh: In function ‘int facebook::cuda::getThreadsInBlock()’:
+./include/caffe/cuda/CudaUtils.cuh:31:11: error: ‘blockDim’ was not declared in this scope
+   return (blockDim.x * blockDim.y * blockDim.z);
+           ^
+In file included from ./include/caffe/cuda/fbfft/FBFFT.h:7:0,
+                 from ./include/caffe/fft/CuFFTWrapper.cuh:5,
+                 from src/caffe/fft/FBFFTHost.cpp:9:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘unsigned int facebook::cuda::fbfft::detail::reverse(unsigned int, unsigned int)’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:29:18: error: ‘__brev’ was not declared in this scope
+   return __brev(x) >> (WARP_SIZE - nbits);
+                  ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘int facebook::cuda::fbfft::detail::adjustedThreadIdxX()’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:41:13: error: ‘threadIdx’ was not declared in this scope
+     return (threadIdx.x & (FFTSize - 1));
+             ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:43:12: error: ‘threadIdx’ was not declared in this scope
+     return threadIdx.x;
+            ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘int facebook::cuda::fbfft::detail::adjustedThreadIdxY()’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:50:13: error: ‘threadIdx’ was not declared in this scope
+     return (threadIdx.y & (FFTSize - 1));
+             ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:52:12: error: ‘threadIdx’ was not declared in this scope
+     return threadIdx.y;
+            ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘int facebook::cuda::fbfft::detail::adjustedBatch()’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:67:13: error: ‘threadIdx’ was not declared in this scope
+     return (threadIdx.x >> LogFFTSize) +
+             ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:68:8: error: ‘blockIdx’ was not declared in this scope
+       (blockIdx.x << LogFFTPerWarp) +
+        ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:69:23: error: ‘gridDim’ was not declared in this scope
+       ((threadIdx.z * gridDim.x) << LogFFTPerWarp);
+                       ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:71:12: error: ‘blockIdx’ was not declared in this scope
+     return blockIdx.x + threadIdx.z * gridDim.x;
+            ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:71:25: error: ‘threadIdx’ was not declared in this scope
+     return blockIdx.x + threadIdx.z * gridDim.x;
+                         ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:71:39: error: ‘gridDim’ was not declared in this scope
+     return blockIdx.x + threadIdx.z * gridDim.x;
+                                       ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘int facebook::cuda::fbfft::detail::adjustedBatchR2C()’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:87:18: error: ‘threadIdx’ was not declared in this scope
+     return 2 * ((threadIdx.x >> LogFFTSize) +
+                  ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:88:18: error: ‘blockIdx’ was not declared in this scope
+                 (blockIdx.x << LogFFTPerWarp) +
+                  ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:89:33: error: ‘gridDim’ was not declared in this scope
+                 ((threadIdx.z * gridDim.x) << LogFFTPerWarp));
+                                 ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:91:17: error: ‘blockIdx’ was not declared in this scope
+     return 2 * (blockIdx.x + threadIdx.z * gridDim.x);
+                 ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:91:30: error: ‘threadIdx’ was not declared in this scope
+     return 2 * (blockIdx.x + threadIdx.z * gridDim.x);
+                              ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:91:44: error: ‘gridDim’ was not declared in this scope
+     return 2 * (blockIdx.x + threadIdx.z * gridDim.x);
+                                            ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘facebook::cuda::Complex facebook::cuda::fbfft::detail::ldg(const facebook::cuda::Complex*)’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:112:34: error: ‘__ldg’ was not declared in this scope
+   return Complex(__ldg(&(p->re())),
+                                  ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In member function ‘void facebook::cuda::fbfft::detail::FFT1DRoots<FFTSize>::twiddlesFromMemory()’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:205:15: error: ‘threadIdx’ was not declared in this scope
+       int x = threadIdx.x % FFTSize + index * WARP_SIZE;
+               ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In member function ‘void facebook::cuda::fbfft::detail::FFT1DBitReversal<FFTSize>::computeBitReversal(int)’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:228:53: error: ‘blockDim’ was not declared in this scope
+     int x = adjustedThreadIdxX<FFTSize>() + index * blockDim.x;
+                                                     ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘void facebook::cuda::fbfft::detail::bitReverse1DWarp(facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, const facebook::cuda::fbfft::detail::FFT1DBitReversal<FFTSize>&, int)’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:256:24: error: ‘blockDim’ was not declared in this scope
+                        blockDim.x >> LogFFTPerWarp);
+                        ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘void facebook::cuda::fbfft::detail::selectEvenWarpDistributed(facebook::cuda::Complex&, facebook::cuda::Complex&)’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:300:7: error: ‘threadIdx’ was not declared in this scope
+   if (threadIdx.x >= HALF_WARP_SIZE) {
+       ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:305:7: error: ‘threadIdx’ was not declared in this scope
+   if (threadIdx.x >= HALF_WARP_SIZE) {
+       ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘void facebook::cuda::fbfft::detail::load1D(const facebook::cuda::DeviceTensor<float, 2>&, const facebook::cuda::DeviceTensor<float, 3>&, facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, int, int)’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:319:51: error: ‘blockDim’ was not declared in this scope
+   int x = adjustedThreadIdxX<FFTSize>() + index * blockDim.x;
+                                                   ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘void facebook::cuda::fbfft::detail::load1DR2C(const facebook::cuda::DeviceTensor<float, 2>&, const facebook::cuda::DeviceTensor<float, 3>&, facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, int, int)’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:348:51: error: ‘blockDim’ was not declared in this scope
+   int x = adjustedThreadIdxX<FFTSize>() + index * blockDim.x;
+                                                   ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘void facebook::cuda::fbfft::detail::store1D(facebook::cuda::DeviceTensor<float, 2>&, facebook::cuda::DeviceTensor<float, 3>&, const facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, int, int)’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:392:51: error: ‘blockDim’ was not declared in this scope
+   int x = adjustedThreadIdxX<FFTSize>() + index * blockDim.x;
+                                                   ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘const facebook::cuda::Complex facebook::cuda::fbfft::detail::HermitianModuloCoefficient(const facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, int)’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:413:11: error: ‘threadIdx’ was not declared in this scope
+   return (threadIdx.x == 0) ?
+           ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘void facebook::cuda::fbfft::detail::store1DR2C(facebook::cuda::DeviceTensor<float, 2>&, facebook::cuda::DeviceTensor<float, 3>&, const facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, int, int)’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:425:51: error: ‘blockDim’ was not declared in this scope
+   int x = adjustedThreadIdxX<FFTSize>() + index * blockDim.x;
+                                                   ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:439:30: error: ‘threadIdx’ was not declared in this scope
+       shfl(tmp, (WARP_SIZE - threadIdx.x) % WARP_SIZE, WARP_SIZE);
+                              ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘void facebook::cuda::fbfft::detail::decimateInFrequency1DWarp(facebook::cuda::Complex&, facebook::cuda::Complex&)’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:486:19: error: ‘threadIdx’ was not declared in this scope
+     otherCoeff = (threadIdx.x & (FFTSize >> logStep)) ?
+                   ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘void facebook::cuda::fbfft::detail::decimateInFrequency1D(facebook::cuda::DeviceTensor<float, 2>&, facebook::cuda::DeviceTensor<float, 3>&, facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize> (&)[1], int)’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:757:14: error: ‘threadIdx’ was not declared in this scope
+       buffer[threadIdx.z][x] = coeffs[reg];
+              ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:762:28: error: ‘threadIdx’ was not declared in this scope
+       coeffs[reg] = buffer[threadIdx.z][bits[reg]];
+                            ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘void facebook::cuda::fbfft::detail::transpose2D(facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, facebook::cuda::Complex (*)[SMemRows][(SMemRows + 1)])’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:856:14: error: ‘threadIdx’ was not declared in this scope
+       buffer[threadIdx.z][threadIdx.y][threadIdx.x] = coeffs.coeff[reg];
+              ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:857:21: error: there are no arguments to ‘__syncthreads’ that depend on a template parameter, so a declaration of ‘__syncthreads’ must be available [-fpermissive]
+       __syncthreads();
+                     ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:857:21: note: (if you use ‘-fpermissive’, G++ will accept your code, but allowing the use of an undeclared name is deprecated)
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:859:21: error: there are no arguments to ‘__syncthreads’ that depend on a template parameter, so a declaration of ‘__syncthreads’ must be available [-fpermissive]
+       __syncthreads();
+                     ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh: In function ‘void facebook::cuda::fbfft::detail::transpose2DMultiple(facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, facebook::cuda::Complex (*)[SMemRows][(SMemRows + 1)])’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:878:21: error: ‘threadIdx’ was not declared in this scope
+   const int thx0 = (threadIdx.x >> LogFFTSize) << LogFFTSize;
+                     ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:884:21: error: there are no arguments to ‘__syncthreads’ that depend on a template parameter, so a declaration of ‘__syncthreads’ must be available [-fpermissive]
+       __syncthreads();
+                     ^
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:890:21: error: there are no arguments to ‘__syncthreads’ that depend on a template parameter, so a declaration of ‘__syncthreads’ must be available [-fpermissive]
+       __syncthreads();
+                     ^
+In file included from ./include/caffe/cuda/fbfft/FBFFTCommon.cuh:899:0,
+                 from ./include/caffe/cuda/fbfft/FBFFT.h:7,
+                 from ./include/caffe/fft/CuFFTWrapper.cuh:5,
+                 from src/caffe/fft/FBFFTHost.cpp:9:
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh: In function ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::cuda::fbfft::fbfft1D(facebook::cuda::DeviceTensor<float, (BatchDims + 1)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 2)>&, cudaStream_t)’:
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:65:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 2, 32, 16);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:65:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 2, 32, 16);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:65:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 2, 32, 16);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:65:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 2, 32, 16);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:66:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 2,  1, 16);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:66:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 2,  1, 16);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:66:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 2,  1, 16);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:66:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 2,  1, 16);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:67:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 4, 16,  8);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:67:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 4, 16,  8);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:67:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 4, 16,  8);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:67:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 4, 16,  8);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:68:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 4,  1,  8);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:68:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 4,  1,  8);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:68:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 4,  1,  8);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:68:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 4,  1,  8);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:69:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 8,  8,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:69:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 8,  8,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:69:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 8,  8,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:69:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 8,  8,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:70:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 8,  1,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:70:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 8,  1,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:70:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 8,  1,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:70:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 8,  1,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:71:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(16,  4,  2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:71:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(16,  4,  2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:71:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(16,  4,  2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:71:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(16,  4,  2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:72:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(16,  1,  2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:72:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(16,  1,  2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:72:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(16,  1,  2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:72:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(16,  1,  2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:73:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(32,  4,  1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:73:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(32,  4,  1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:73:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(32,  4,  1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:73:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(32,  4,  1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:74:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(32,  1,  1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:42:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:74:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(32,  1,  1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:74:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(32,  1,  1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:49:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:74:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(32,  1,  1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:61:7: error: expected primary-expression before ‘<’ token
+     <<<blocks, threads, 0, s>>>(real, complex);                         \
+       ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:75:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_GT_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_GT_WARP_SIZE(64,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:61:31: error: expected primary-expression before ‘>’ token
+     <<<blocks, threads, 0, s>>>(real, complex);                         \
+                               ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:75:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_GT_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_GT_WARP_SIZE(64,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:61:7: error: expected primary-expression before ‘<’ token
+     <<<blocks, threads, 0, s>>>(real, complex);                         \
+       ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:76:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_GT_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_GT_WARP_SIZE(128, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:61:31: error: expected primary-expression before ‘>’ token
+     <<<blocks, threads, 0, s>>>(real, complex);                         \
+                               ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:76:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_GT_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_GT_WARP_SIZE(128, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:61:7: error: expected primary-expression before ‘<’ token
+     <<<blocks, threads, 0, s>>>(real, complex);                         \
+       ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:77:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_GT_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_GT_WARP_SIZE(256, 2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:61:31: error: expected primary-expression before ‘>’ token
+     <<<blocks, threads, 0, s>>>(real, complex);                         \
+                               ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:77:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_GT_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_GT_WARP_SIZE(256, 2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh: In function ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::cuda::fbfft::fbifft1D(facebook::cuda::DeviceTensor<float, (BatchDims + 1)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 2)>&, cudaStream_t)’:
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:111:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:132:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 2, 32, 16);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:111:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:132:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 2, 32, 16);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:116:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:132:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 2, 32, 16);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:116:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:132:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 2, 32, 16);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:111:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:133:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 4,  8,  8);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:111:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:133:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 4,  8,  8);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:116:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:133:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 4,  8,  8);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:116:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:133:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 4,  8,  8);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:111:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:134:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 8,  4,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:111:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:134:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 8,  4,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:116:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:134:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 8,  4,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:116:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:134:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE( 8,  4,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:111:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:135:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(16,  4,  2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:111:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:135:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(16,  4,  2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:116:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:135:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(16,  4,  2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:116:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:135:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(16,  4,  2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:111:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:136:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(32,  4,  1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:111:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complex);                     \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:136:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(32,  4,  1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:116:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+           ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:136:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(32,  4,  1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:116:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(                                    \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:136:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_LE_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_LE_WARP_SIZE(32,  4,  1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:128:9: error: expected primary-expression before ‘<’ token
+       <<<blocks, threads, 0, s>>>(real, complex);                       \
+         ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:137:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_GT_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_GT_WARP_SIZE(64,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:128:33: error: expected primary-expression before ‘>’ token
+       <<<blocks, threads, 0, s>>>(real, complex);                       \
+                                 ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:137:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_GT_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_GT_WARP_SIZE(64,  4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:128:9: error: expected primary-expression before ‘<’ token
+       <<<blocks, threads, 0, s>>>(real, complex);                       \
+         ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:138:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_GT_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_GT_WARP_SIZE(128, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:128:33: error: expected primary-expression before ‘>’ token
+       <<<blocks, threads, 0, s>>>(real, complex);                       \
+                                 ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:138:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_GT_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_GT_WARP_SIZE(128, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:128:9: error: expected primary-expression before ‘<’ token
+       <<<blocks, threads, 0, s>>>(real, complex);                       \
+         ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:139:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_GT_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_GT_WARP_SIZE(256, 2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:128:33: error: expected primary-expression before ‘>’ token
+       <<<blocks, threads, 0, s>>>(real, complex);                       \
+                                 ^
+./include/caffe/cuda/fbfft/FBFFT-inl.cuh:139:3: note: in expansion of macro ‘SELECT_FBFFT_1D_DIF_GT_WARP_SIZE’
+   SELECT_FBFFT_1D_DIF_GT_WARP_SIZE(256, 2);
+   ^
+In file included from ./include/caffe/cuda/fbfft/FBFFTCommon.cuh:900:0,
+                 from ./include/caffe/cuda/fbfft/FBFFT.h:7,
+                 from ./include/caffe/fft/CuFFTWrapper.cuh:5,
+                 from src/caffe/fft/FBFFTHost.cpp:9:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::load2D(const facebook::cuda::DeviceTensor<float, 3>&, facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, int, int, int)’:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:27:52: error: ‘blockDim’ was not declared in this scope
+   int x = adjustedThreadIdxX<FFTSize>() + indexX * blockDim.x;
+                                                    ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::load2DR2C(const facebook::cuda::DeviceTensor<float, 3>&, facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, int, int, int)’:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:47:52: error: ‘blockDim’ was not declared in this scope
+   int x = adjustedThreadIdxX<FFTSize>() + indexX * blockDim.x;
+                                                    ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::store2D(facebook::cuda::DeviceTensor<float, 4>&, const facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, int, int, int)’:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:70:52: error: ‘blockDim’ was not declared in this scope
+   int x = adjustedThreadIdxX<FFTSize>() + indexX * blockDim.x;
+                                                    ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::transpose2DHermitianMultiple(facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize> (&)[RowsPerWarp], facebook::cuda::Complex (*)[(SMemRows + 1)])’:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:92:21: error: ‘threadIdx’ was not declared in this scope
+   const int thx0 = (threadIdx.x >> LogFFTSize) << LogFFTSize;
+                     ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:95:51: error: ‘blockDim’ was not declared in this scope
+     int y = adjustedThreadIdxY<FFTSize>() + row * blockDim.y;
+                                                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:100:17: error: there are no arguments to ‘__syncthreads’ that depend on a template parameter, so a declaration of ‘__syncthreads’ must be available [-fpermissive]
+   __syncthreads();
+                 ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:104:51: error: ‘blockDim’ was not declared in this scope
+     int y = adjustedThreadIdxY<FFTSize>() + row * blockDim.y;
+                                                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:112:17: error: there are no arguments to ‘__syncthreads’ that depend on a template parameter, so a declaration of ‘__syncthreads’ must be available [-fpermissive]
+   __syncthreads();
+                 ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::decimateInFrequencyHermitian2DWarpKernel(facebook::cuda::DeviceTensor<float, 3>, facebook::cuda::DeviceTensor<float, 4>)’:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:183:49: error: ‘blockDim’ was not declared in this scope
+     int y = adjustedThreadIdxY<FFTSize>() + i * blockDim.y;
+                                                 ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:193:51: error: ‘blockDim’ was not declared in this scope
+       int y = adjustedThreadIdxY<FFTSize>() + i * blockDim.y;
+                                                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh: At global scope:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:219:18: error: expected constructor, destructor, or type conversion before ‘(’ token
+ __launch_bounds__(32 * 8, 4) // 64 X 64 and 128 x 128
+                  ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::decimateInFrequency2DKernel(facebook::cuda::DeviceTensor<facebook::cuda::Complex, 3>, facebook::cuda::DeviceTensor<facebook::cuda::Complex, 3>)’:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:339:23: error: ‘threadIdx’ was not declared in this scope
+       int y = yiter + threadIdx.y + row * blockDim.y;
+                       ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:339:43: error: ‘blockDim’ was not declared in this scope
+       int y = yiter + threadIdx.y + row * blockDim.y;
+                                           ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:378:21: error: ‘threadIdx’ was not declared in this scope
+             buffer2[threadIdx.y][x] = coeffsArray[row][reg];
+                     ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:382:45: error: ‘threadIdx’ was not declared in this scope
+             coeffsArray[row][reg] = buffer2[threadIdx.y][bits[reg]];
+                                             ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:394:23: error: ‘threadIdx’ was not declared in this scope
+       int y = yiter + threadIdx.y + row * blockDim.y;
+                       ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:394:43: error: ‘blockDim’ was not declared in this scope
+       int y = yiter + threadIdx.y + row * blockDim.y;
+                                           ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh: At global scope:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:410:19: error: expected constructor, destructor, or type conversion before ‘(’ token
+  __launch_bounds__(32 * 32, 1)
+                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:422:18: error: expected constructor, destructor, or type conversion before ‘(’ token
+ __launch_bounds__(32 * 32, 2)
+                  ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh: In function ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::cuda::fbfft::fbfft2D(facebook::cuda::DeviceTensor<float, (BatchDims + 2)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 3)>&, cudaStream_t)’:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+           ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:494:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 2, 16, true, 1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:494:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 2, 16, true, 1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+           ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:494:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 2, 16, true, 1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:494:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 2, 16, true, 1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+           ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:495:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 4,  8, true, 1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:495:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 4,  8, true, 1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+           ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:495:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 4,  8, true, 1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:495:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 4,  8, true, 1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+           ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:496:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 8,  4, true, 2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:496:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 8,  4, true, 2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+           ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:496:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 8,  4, true, 2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:496:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 8,  4, true, 2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+           ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:497:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(16,  2, true, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:497:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(16,  2, true, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+           ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:497:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(16,  2, true, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:497:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(16,  2, true, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+           ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:498:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(32,  1, true, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:498:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(32,  1, true, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+           ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:498:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(32,  1, true, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:498:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(32,  1, true, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:490:7: error: expected primary-expression before ‘<’ token
+     <<<blocks, threads, 0, s>>>(real, complexAsFloat);                  \
+       ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:499:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE( 64, 4, 4, true);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:490:31: error: expected primary-expression before ‘>’ token
+     <<<blocks, threads, 0, s>>>(real, complexAsFloat);                  \
+                               ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:499:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE( 64, 4, 4, true);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:490:7: error: expected primary-expression before ‘<’ token
+     <<<blocks, threads, 0, s>>>(real, complexAsFloat);                  \
+       ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:500:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 4, 4, true);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:490:31: error: expected primary-expression before ‘>’ token
+     <<<blocks, threads, 0, s>>>(real, complexAsFloat);                  \
+                               ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:500:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 4, 4, true);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh: In function ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::cuda::fbfft::fbfft2D(facebook::cuda::DeviceTensor<facebook::cuda::Complex, (BatchDims + 2)>&, facebook::cuda::DeviceTensor<facebook::cuda::Complex, (BatchDims + 2)>&, cudaStream_t)’:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:538:5: error: ‘decimateInFrequency2DKernel64’ is not a member of ‘facebook::cuda::fbfft::detail’
+     detail::decimateInFrequency2DKernel##FFT_SIZE<                      \
+     ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:544:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 2, 17, true);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:540:7: error: expected primary-expression before ‘<<’ token
+       <<<blocks, threads, 0, s>>>(complexSrc, complexDst);              \
+       ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:544:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 2, 17, true);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:540:9: error: expected primary-expression before ‘<’ token
+       <<<blocks, threads, 0, s>>>(complexSrc, complexDst);              \
+         ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:544:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 2, 17, true);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:540:33: error: expected primary-expression before ‘>’ token
+       <<<blocks, threads, 0, s>>>(complexSrc, complexDst);              \
+                                 ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:544:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 2, 17, true);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:538:5: error: ‘decimateInFrequency2DKernel128’ is not a member of ‘facebook::cuda::fbfft::detail’
+     detail::decimateInFrequency2DKernel##FFT_SIZE<                      \
+     ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:545:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 1, 17, true);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:540:7: error: expected primary-expression before ‘<<’ token
+       <<<blocks, threads, 0, s>>>(complexSrc, complexDst);              \
+       ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:545:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 1, 17, true);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:540:9: error: expected primary-expression before ‘<’ token
+       <<<blocks, threads, 0, s>>>(complexSrc, complexDst);              \
+         ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:545:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 1, 17, true);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:540:33: error: expected primary-expression before ‘>’ token
+       <<<blocks, threads, 0, s>>>(complexSrc, complexDst);              \
+                                 ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:545:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 1, 17, true);
+   ^
+In file included from ./include/caffe/cuda/fbfft/FBFFTCommon.cuh:901:0,
+                 from ./include/caffe/cuda/fbfft/FBFFT.h:7,
+                 from ./include/caffe/fft/CuFFTWrapper.cuh:5,
+                 from src/caffe/fft/FBFFTHost.cpp:9:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::load2D(const facebook::cuda::DeviceTensor<T, Dim>&, facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, int, int, int, int)’:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:28:56: error: ‘blockDim’ was not declared in this scope
+   int col = adjustedThreadIdxX<FFTSize>() + indexCol * blockDim.x;
+                                                        ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::load2D2a(const facebook::cuda::DeviceTensor<T, Dim>&, facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, int, int, int, int)’:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:66:56: error: ‘blockDim’ was not declared in this scope
+   int col = adjustedThreadIdxX<FFTSize>() + indexCol * blockDim.x;
+                                                        ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::load2D2b(const facebook::cuda::DeviceTensor<T, Dim>&, facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, int, int, int, int)’:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:105:58: error: ‘blockDim’ was not declared in this scope
+     int col = adjustedThreadIdxX<FFTSize>() + indexCol * blockDim.x;
+                                                          ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::store2D(facebook::cuda::DeviceTensor<float, 3>&, const facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, int, int, int)’:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:143:56: error: ‘blockDim’ was not declared in this scope
+   int col = adjustedThreadIdxX<FFTSize>() + indexCol * blockDim.x;
+                                                        ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::store2D2(facebook::cuda::DeviceTensor<float, 3>&, const facebook::cuda::fbfft::detail::FFT1DCoeffs<FFTSize>&, int, int, int)’:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:160:56: error: ‘blockDim’ was not declared in this scope
+   int col = adjustedThreadIdxX<FFTSize>() + indexCol * blockDim.x;
+                                                        ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:166:17: error: ‘gridDim’ was not declared in this scope
+     if (batch + gridDim.x < real.getSize(0)) {
+                 ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::decimateInFrequencyInverseHermitian2DWarpKernel(facebook::cuda::DeviceTensor<facebook::cuda::Complex, 3>, facebook::cuda::DeviceTensor<float, 3>)’:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:203:67: error: ‘gridDim’ was not declared in this scope
+   load2D2b<Complex, FFTSize, 3>(src, coeffs, batch + FFTPerWarp * gridDim.x, 0, 0, 0);
+                                                                   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::decimateInFrequencyInverse2DKernel(facebook::cuda::DeviceTensor<float, 4>, facebook::cuda::DeviceTensor<float, 4>)’:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:281:68: error: ‘gridDim’ was not declared in this scope
+         load2D2b<float, FFTSize, 4>(src, coeffsArray[row], batch + gridDim.x, yiter, row, reg);
+                                                                    ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:313:19: error: ‘threadIdx’ was not declared in this scope
+           buffer2[threadIdx.y][y] = coeffsArray[row][reg];
+                   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:317:43: error: ‘threadIdx’ was not declared in this scope
+           coeffsArray[row][reg] = buffer2[threadIdx.y][bits[reg]];
+                                           ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:331:23: error: ‘threadIdx’ was not declared in this scope
+       int y = yiter + threadIdx.y + row * blockDim.y;
+                       ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:331:43: error: ‘blockDim’ was not declared in this scope
+       int y = yiter + threadIdx.y + row * blockDim.y;
+                                           ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh: In function ‘void facebook::cuda::fbfft::detail::decimateInFrequencyInverse2DKernel(facebook::cuda::DeviceTensor<facebook::cuda::Complex, 3>, facebook::cuda::DeviceTensor<float, 3>)’:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:386:23: error: ‘threadIdx’ was not declared in this scope
+       int x = yiter + threadIdx.y + row * blockDim.y;
+                       ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:386:43: error: ‘blockDim’ was not declared in this scope
+       int x = yiter + threadIdx.y + row * blockDim.y;
+                                           ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:423:21: error: ‘threadIdx’ was not declared in this scope
+             buffer2[threadIdx.y][x] = coeffsArray[row][reg];
+                     ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:427:45: error: ‘threadIdx’ was not declared in this scope
+             coeffsArray[row][reg] = buffer2[threadIdx.y][bits[reg]];
+                                             ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:443:26: error: ‘threadIdx’ was not declared in this scope
+       int rrow = yiter + threadIdx.y + row * blockDim.y;
+                          ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:443:46: error: ‘blockDim’ was not declared in this scope
+       int rrow = yiter + threadIdx.y + row * blockDim.y;
+                                              ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:449:23: error: ‘gridDim’ was not declared in this scope
+           if (batch + gridDim.x < real.getSize(0)) {
+                       ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh: At global scope:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:459:18: error: expected constructor, destructor, or type conversion before ‘(’ token
+ __launch_bounds__(32 * 32, 2)
+                  ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:470:19: error: expected constructor, destructor, or type conversion before ‘(’ token
+  __launch_bounds__(32 * 32, 1)
+                   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:481:18: error: expected constructor, destructor, or type conversion before ‘(’ token
+ __launch_bounds__(32 * 32, 2)
+                  ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh: In function ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::cuda::fbfft::fbifft2D(facebook::cuda::DeviceTensor<float, (BatchDims + 3)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 3)>&, cudaStream_t)’:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:529:5: error: ‘decimateInFrequencyInverse2DKernel64’ is not a member of ‘facebook::cuda::fbfft::detail’
+     detail::decimateInFrequencyInverse2DKernel##FFT_SIZE<                \
+     ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:535:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 2, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:531:7: error: expected primary-expression before ‘<<’ token
+       <<<blocks, threads, 0, s>>>(srcComplexAsFloat, dstComplexAsFloat); \
+       ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:535:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 2, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:531:9: error: expected primary-expression before ‘<’ token
+       <<<blocks, threads, 0, s>>>(srcComplexAsFloat, dstComplexAsFloat); \
+         ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:535:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 2, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:531:33: error: expected primary-expression before ‘>’ token
+       <<<blocks, threads, 0, s>>>(srcComplexAsFloat, dstComplexAsFloat); \
+                                 ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:535:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 2, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:531:9: error: expected primary-expression before ‘<’ token
+       <<<blocks, threads, 0, s>>>(srcComplexAsFloat, dstComplexAsFloat); \
+         ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:536:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 2, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:531:33: error: expected primary-expression before ‘>’ token
+       <<<blocks, threads, 0, s>>>(srcComplexAsFloat, dstComplexAsFloat); \
+                                 ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:536:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 2, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh: In function ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::cuda::fbfft::fbifft2D(facebook::cuda::DeviceTensor<facebook::cuda::Complex, (BatchDims + 2)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 2)>&, cudaStream_t)’:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+           ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:604:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(2, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:604:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(2, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+           ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:604:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(2, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:604:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(2, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+           ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:605:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(4, 8, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:605:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(4, 8, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+           ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:605:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(4, 8, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:605:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(4, 8, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+           ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:606:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(8, 4, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:606:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(8, 4, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+           ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:606:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(8, 4, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:606:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(8, 4, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+           ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:607:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(16, 2, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:607:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(16, 2, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+           ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:607:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(16, 2, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:607:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(16, 2, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+           ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:608:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(32, 1, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:608:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(32, 1, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:11: error: expected primary-expression before ‘<’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+           ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:608:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(32, 1, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:35: error: expected primary-expression before ‘>’ token
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:608:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(32, 1, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:598:5: error: ‘decimateInFrequencyInverse2DKernel64’ is not a member of ‘facebook::cuda::fbfft::detail’
+     detail::decimateInFrequencyInverse2DKernel##FFT_SIZE<               \
+     ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:610:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 1, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:600:7: error: expected primary-expression before ‘<<’ token
+       <<<blocks, threads, 0, s>>>(srcComplex, realDst);                 \
+       ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:610:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 1, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:600:9: error: expected primary-expression before ‘<’ token
+       <<<blocks, threads, 0, s>>>(srcComplex, realDst);                 \
+         ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:610:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 1, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:600:33: error: expected primary-expression before ‘>’ token
+       <<<blocks, threads, 0, s>>>(srcComplex, realDst);                 \
+                                 ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:610:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 1, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:600:9: error: expected primary-expression before ‘<’ token
+       <<<blocks, threads, 0, s>>>(srcComplex, realDst);                 \
+         ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:611:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 1, 8, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:600:33: error: expected primary-expression before ‘>’ token
+       <<<blocks, threads, 0, s>>>(srcComplex, realDst);                 \
+                                 ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:611:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 1, 8, true);
+   ^
+In file included from ./include/caffe/fft/CuFFTWrapper.cuh:5:0,
+                 from src/caffe/fft/FBFFTHost.cpp:9:
+./include/caffe/cuda/fbfft/FBFFT.h: At global scope:
+./include/caffe/cuda/fbfft/FBFFT.h:11:7: error: redefinition of ‘class facebook::cuda::fbfft::FBFFTParameters’
+ class FBFFTParameters {
+       ^
+In file included from src/caffe/fft/FBFFTHost.cpp:7:0:
+./include/caffe/cuda/fbfft/FBFFT.cuh:10:7: error: previous definition of ‘class facebook::cuda::fbfft::FBFFTParameters’
+ class FBFFTParameters {
+       ^
+In file included from ./include/caffe/cuda/Complex.cuh:9:0,
+                 from src/caffe/fft/FBFFTHost.cpp:4:
+./include/caffe/cuda/ShuffleTypes.cuh: In instantiation of ‘T facebook::cuda::shfl(T, int, int) [with T = float]’:
+./include/caffe/cuda/fbfft/FBFFTCommon.cuh:298:42:   required from here
+./include/caffe/cuda/ShuffleTypes.cuh:19:36: error: ‘__shfl’ was not declared in this scope
+   return __shfl(val, srcLane, width);
+                                    ^
+In file included from ./include/caffe/cuda/fbfft/FBFFTCommon.cuh:900:0,
+                 from ./include/caffe/cuda/fbfft/FBFFT.h:7,
+                 from ./include/caffe/fft/CuFFTWrapper.cuh:5,
+                 from src/caffe/fft/FBFFTHost.cpp:9:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh: In instantiation of ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::cuda::fbfft::fbfft2D(facebook::cuda::DeviceTensor<float, (BatchDims + 2)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 3)>&, cudaStream_t) [with int BatchDims = 1; cudaStream_t = CUstream_st*]’:
+src/caffe/fft/FBFFTHost.cpp:86:52:   required from ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::deeplearning::torch::fbfft2dHost(facebook::cuda::DeviceTensor<float, (BatchDims + 2)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 3)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 3)>*, facebook::cuda::fbfft::FBFFTParameters, cudaStream_t) [with int Batch = 1; cudaStream_t = CUstream_st*]’
+src/caffe/fft/FBFFTHost.cpp:121:17:   required from here
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:41: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                         ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:494:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 2, 16, true, 1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:41: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                         ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:494:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 2, 16, true, 1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:41: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                         ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:495:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 4,  8, true, 1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:41: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                         ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:495:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 4,  8, true, 1);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:41: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                         ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:496:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 8,  4, true, 2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:41: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                         ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:496:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE( 8,  4, true, 2);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:41: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                         ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:497:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(16,  2, true, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:41: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                         ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:497:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(16,  2, true, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:471:41: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                         ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:498:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(32,  1, true, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:477:41: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(real, complexAsFloat);              \
+                                         ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:498:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(32,  1, true, 4);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:490:37: warning: left operand of comma operator has no effect [-Wunused-value]
+     <<<blocks, threads, 0, s>>>(real, complexAsFloat);                  \
+                                     ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:499:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE( 64, 4, 4, true);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:490:37: warning: left operand of comma operator has no effect [-Wunused-value]
+     <<<blocks, threads, 0, s>>>(real, complexAsFloat);                  \
+                                     ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:500:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 4, 4, true);
+   ^
+In file included from ./include/caffe/cuda/fbfft/FBFFTCommon.cuh:901:0,
+                 from ./include/caffe/cuda/fbfft/FBFFT.h:7,
+                 from ./include/caffe/fft/CuFFTWrapper.cuh:5,
+                 from src/caffe/fft/FBFFTHost.cpp:9:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh: In instantiation of ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::cuda::fbfft::fbifft2D(facebook::cuda::DeviceTensor<float, (BatchDims + 3)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 3)>&, cudaStream_t) [with int BatchDims = 1; cudaStream_t = CUstream_st*]’:
+src/caffe/fft/FBFFTHost.cpp:92:59:   required from ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::deeplearning::torch::fbfft2dHost(facebook::cuda::DeviceTensor<float, (BatchDims + 2)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 3)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 3)>*, facebook::cuda::fbfft::FBFFTParameters, cudaStream_t) [with int Batch = 1; cudaStream_t = CUstream_st*]’
+src/caffe/fft/FBFFTHost.cpp:121:17:   required from here
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:531:52: warning: left operand of comma operator has no effect [-Wunused-value]
+       <<<blocks, threads, 0, s>>>(srcComplexAsFloat, dstComplexAsFloat); \
+                                                    ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:535:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 2, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:531:52: warning: left operand of comma operator has no effect [-Wunused-value]
+       <<<blocks, threads, 0, s>>>(srcComplexAsFloat, dstComplexAsFloat); \
+                                                    ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:536:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 2, 16, true);
+   ^
+In file included from ./include/caffe/cuda/fbfft/FBFFTCommon.cuh:900:0,
+                 from ./include/caffe/cuda/fbfft/FBFFT.h:7,
+                 from ./include/caffe/fft/CuFFTWrapper.cuh:5,
+                 from src/caffe/fft/FBFFTHost.cpp:9:
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh: In instantiation of ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::cuda::fbfft::fbfft2D(facebook::cuda::DeviceTensor<facebook::cuda::Complex, (BatchDims + 2)>&, facebook::cuda::DeviceTensor<facebook::cuda::Complex, (BatchDims + 2)>&, cudaStream_t) [with int BatchDims = 1; cudaStream_t = CUstream_st*]’:
+src/caffe/fft/FBFFTHost.cpp:100:49:   required from ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::deeplearning::torch::fbfft2dHost(facebook::cuda::DeviceTensor<float, (BatchDims + 2)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 3)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 3)>*, facebook::cuda::fbfft::FBFFTParameters, cudaStream_t) [with int Batch = 1; cudaStream_t = CUstream_st*]’
+src/caffe/fft/FBFFTHost.cpp:121:17:   required from here
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:540:45: warning: left operand of comma operator has no effect [-Wunused-value]
+       <<<blocks, threads, 0, s>>>(complexSrc, complexDst);              \
+                                             ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:544:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 2, 17, true);
+   ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:540:45: warning: left operand of comma operator has no effect [-Wunused-value]
+       <<<blocks, threads, 0, s>>>(complexSrc, complexDst);              \
+                                             ^
+./include/caffe/cuda/fbfft/FBFFT2D-inl.cuh:545:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 1, 17, true);
+   ^
+In file included from ./include/caffe/cuda/fbfft/FBFFTCommon.cuh:901:0,
+                 from ./include/caffe/cuda/fbfft/FBFFT.h:7,
+                 from ./include/caffe/fft/CuFFTWrapper.cuh:5,
+                 from src/caffe/fft/FBFFTHost.cpp:9:
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh: In instantiation of ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::cuda::fbfft::fbifft2D(facebook::cuda::DeviceTensor<facebook::cuda::Complex, (BatchDims + 2)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 2)>&, cudaStream_t) [with int BatchDims = 1; cudaStream_t = CUstream_st*]’:
+src/caffe/fft/FBFFTHost.cpp:102:45:   required from ‘facebook::cuda::fbfft::FBFFTParameters::ErrorCode facebook::deeplearning::torch::fbfft2dHost(facebook::cuda::DeviceTensor<float, (BatchDims + 2)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 3)>&, facebook::cuda::DeviceTensor<float, (BatchDims + 3)>*, facebook::cuda::fbfft::FBFFTParameters, cudaStream_t) [with int Batch = 1; cudaStream_t = CUstream_st*]’
+src/caffe/fft/FBFFTHost.cpp:121:17:   required from here
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:47: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                               ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:604:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(2, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:47: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                               ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:604:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(2, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:47: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                               ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:605:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(4, 8, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:47: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                               ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:605:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(4, 8, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:47: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                               ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:606:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(8, 4, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:47: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                               ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:606:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(8, 4, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:47: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                               ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:607:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(16, 2, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:47: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                               ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:607:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(16, 2, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:581:47: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                               ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:608:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(32, 1, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:588:47: warning: left operand of comma operator has no effect [-Wunused-value]
+         <<<blocks, threads, 0, s>>>(srcComplex, realDst);               \
+                                               ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:608:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_WARP_SINGLE’
+   SELECT_FBFFT_2D_DIF_WARP_SINGLE(32, 1, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:600:45: warning: left operand of comma operator has no effect [-Wunused-value]
+       <<<blocks, threads, 0, s>>>(srcComplex, realDst);                 \
+                                             ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:610:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(64, 1, 16, true);
+   ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:600:45: warning: left operand of comma operator has no effect [-Wunused-value]
+       <<<blocks, threads, 0, s>>>(srcComplex, realDst);                 \
+                                             ^
+./include/caffe/cuda/fbfft/FBIFFT2D-inl.cuh:611:3: note: in expansion of macro ‘SELECT_FBFFT_2D_DIF_SINGLE’
+   SELECT_FBFFT_2D_DIF_SINGLE(128, 1, 8, true);
+   ^
+Makefile:523: recipe for target '.build_release/src/caffe/fft/FBFFTHost.o' failed
+make: *** [.build_release/src/caffe/fft/FBFFTHost.o] Error 1

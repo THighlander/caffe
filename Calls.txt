@@ -1,0 +1,206 @@
+I0923 14:43:12.049746 13000 caffe.cpp:113] Use GPU with device ID 0
+I0923 14:43:14.655139 13000 caffe.cpp:121] Starting Optimization
+I0923 14:43:14.655405 13000 solver.cpp:32] Initializing solver from parameters: 
+test_iter: 1000
+test_interval: 10000
+base_lr: 0.01
+display: 1
+max_iter: 100
+lr_policy: "inv"
+gamma: 0.0001
+power: 0.75
+momentum: 0.9
+weight_decay: 0.0005
+snapshot: 5000
+snapshot_prefix: "exper/simple"
+solver_mode: GPU
+net: "exper/simple/example.prototxt"
+I0923 14:43:14.655470 13000 solver.cpp:70] Creating training net from net file: exper/simple/example.prototxt
+I0923 14:43:14.668503 13000 net.cpp:42] Initializing net from parameters: 
+name: "Tester"
+state {
+  phase: TRAIN
+}
+layer {
+  name: "mnist"
+  type: "DummyData"
+  top: "data"
+  top: "label"
+  dummy_data_param {
+    data_filler {
+      type: "constant"
+    }
+    num: 1
+    channels: 1
+    height: 128
+    width: 128
+  }
+}
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 1
+    kernel_size: 16
+    stride: 1
+    weight_filler {
+      type: "constant"
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+layer {
+  name: "supress"
+  type: "Silence"
+  bottom: "label"
+}
+layer {
+  name: "supress2"
+  type: "Silence"
+  bottom: "conv1"
+}
+I0923 14:43:14.668589 13000 layer_factory.hpp:74] Creating layer mnist
+I0923 14:43:14.668612 13000 net.cpp:90] Creating Layer mnist
+I0923 14:43:14.668625 13000 net.cpp:368] mnist -> data
+I0923 14:43:14.668661 13000 net.cpp:368] mnist -> label
+I0923 14:43:14.668676 13000 net.cpp:120] Setting up mnist
+I0923 14:43:14.668805 13000 net.cpp:127] Top shape: 1 1 128 128 (16384)
+I0923 14:43:14.668818 13000 net.cpp:127] Top shape: 1 1 128 128 (16384)
+I0923 14:43:14.668829 13000 layer_factory.hpp:74] Creating layer conv1
+I0923 14:43:14.668845 13000 net.cpp:90] Creating Layer conv1
+I0923 14:43:14.668856 13000 net.cpp:410] conv1 <- data
+I0923 14:43:14.668877 13000 net.cpp:368] conv1 -> conv1
+I0923 14:43:14.668894 13000 net.cpp:120] Setting up conv1
+I0923 14:43:14.688072 13000 net.cpp:127] Top shape: 1 1 113 113 (12769)
+I0923 14:43:14.688166 13000 layer_factory.hpp:74] Creating layer supress
+I0923 14:43:14.688197 13000 net.cpp:90] Creating Layer supress
+I0923 14:43:14.688210 13000 net.cpp:410] supress <- label
+I0923 14:43:14.688222 13000 net.cpp:120] Setting up supress
+I0923 14:43:14.688233 13000 layer_factory.hpp:74] Creating layer supress2
+I0923 14:43:14.688247 13000 net.cpp:90] Creating Layer supress2
+I0923 14:43:14.688256 13000 net.cpp:410] supress2 <- conv1
+I0923 14:43:14.688267 13000 net.cpp:120] Setting up supress2
+I0923 14:43:14.688277 13000 net.cpp:194] supress2 does not need backward computation.
+I0923 14:43:14.688287 13000 net.cpp:194] supress does not need backward computation.
+I0923 14:43:14.688295 13000 net.cpp:194] conv1 does not need backward computation.
+I0923 14:43:14.688305 13000 net.cpp:194] mnist does not need backward computation.
+I0923 14:43:14.688318 13000 net.cpp:482] Collecting Learning Rate and Weight Decay.
+I0923 14:43:14.688333 13000 net.cpp:247] Network initialization done.
+I0923 14:43:14.688340 13000 net.cpp:248] Memory required for data: 182148
+I0923 14:43:14.688607 13000 solver.cpp:154] Creating test net (#0) specified by net file: exper/simple/example.prototxt
+I0923 14:43:14.688705 13000 net.cpp:42] Initializing net from parameters: 
+name: "Tester"
+state {
+  phase: TEST
+}
+layer {
+  name: "mnist"
+  type: "DummyData"
+  top: "data"
+  top: "label"
+  dummy_data_param {
+    data_filler {
+      type: "constant"
+    }
+    num: 1
+    channels: 1
+    height: 128
+    width: 128
+  }
+}
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 1
+    kernel_size: 16
+    stride: 1
+    weight_filler {
+      type: "constant"
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+layer {
+  name: "supress"
+  type: "Silence"
+  bottom: "label"
+}
+layer {
+  name: "supress2"
+  type: "Silence"
+  bottom: "conv1"
+}
+I0923 14:43:14.688767 13000 layer_factory.hpp:74] Creating layer mnist
+I0923 14:43:14.688803 13000 net.cpp:90] Creating Layer mnist
+I0923 14:43:14.688815 13000 net.cpp:368] mnist -> data
+I0923 14:43:14.688830 13000 net.cpp:368] mnist -> label
+I0923 14:43:14.688844 13000 net.cpp:120] Setting up mnist
+I0923 14:43:14.688969 13000 net.cpp:127] Top shape: 1 1 128 128 (16384)
+I0923 14:43:14.688982 13000 net.cpp:127] Top shape: 1 1 128 128 (16384)
+I0923 14:43:14.688992 13000 layer_factory.hpp:74] Creating layer conv1
+I0923 14:43:14.689008 13000 net.cpp:90] Creating Layer conv1
+I0923 14:43:14.689018 13000 net.cpp:410] conv1 <- data
+I0923 14:43:14.689033 13000 net.cpp:368] conv1 -> conv1
+I0923 14:43:14.689046 13000 net.cpp:120] Setting up conv1
+I0923 14:43:14.689280 13000 net.cpp:127] Top shape: 1 1 113 113 (12769)
+I0923 14:43:14.689298 13000 layer_factory.hpp:74] Creating layer supress
+I0923 14:43:14.689311 13000 net.cpp:90] Creating Layer supress
+I0923 14:43:14.689321 13000 net.cpp:410] supress <- label
+I0923 14:43:14.689330 13000 net.cpp:120] Setting up supress
+I0923 14:43:14.689339 13000 layer_factory.hpp:74] Creating layer supress2
+I0923 14:43:14.689352 13000 net.cpp:90] Creating Layer supress2
+I0923 14:43:14.689362 13000 net.cpp:410] supress2 <- conv1
+I0923 14:43:14.689370 13000 net.cpp:120] Setting up supress2
+I0923 14:43:14.689379 13000 net.cpp:194] supress2 does not need backward computation.
+I0923 14:43:14.689388 13000 net.cpp:194] supress does not need backward computation.
+I0923 14:43:14.689398 13000 net.cpp:194] conv1 does not need backward computation.
+I0923 14:43:14.689406 13000 net.cpp:194] mnist does not need backward computation.
+I0923 14:43:14.689416 13000 net.cpp:482] Collecting Learning Rate and Weight Decay.
+I0923 14:43:14.689426 13000 net.cpp:247] Network initialization done.
+I0923 14:43:14.689435 13000 net.cpp:248] Memory required for data: 182148
+I0923 14:43:14.689463 13000 solver.cpp:42] Solver scaffolding done.
+I0923 14:43:14.689486 13000 solver.cpp:250] Solving Tester
+I0923 14:43:14.689494 13000 solver.cpp:251] Learning Rate Policy: inv
+I0923 14:43:14.689580 13000 solver.cpp:294] Iteration 0, Testing net (#0)
+F0923 14:43:14.693943 13000 math_functions.cu:85] Check failed: error == cudaSuccess (77 vs. 0)  an illegal memory access was encountered
+*** Check failure stack trace: ***
+    @     0x7f0eead4ec6c  (unknown)
+    @     0x7f0eead4ebb8  (unknown)
+    @     0x7f0eead4e5ba  (unknown)
+    @     0x7f0eead51551  (unknown)
+    @     0x7f0eeb1ae1ca  caffe::caffe_gpu_memcpy()
+    @     0x7f0eeb16ac80  caffe::SyncedMemory::gpu_data()
+    @     0x7f0eeb179b62  caffe::Blob<>::gpu_data()
+    @     0x7f0eeb1b612a  caffe::ConvolutionLayer<>::Forward_gpu()
+    @     0x7f0eeb1909fa  caffe::Net<>::ForwardFromTo()
+    @     0x7f0eeb190b47  caffe::Net<>::ForwardPrefilled()
+    @     0x7f0eeb1a1721  caffe::Solver<>::Test()
+    @     0x7f0eeb1a1e16  caffe::Solver<>::TestAll()
+    @     0x7f0eeb1a9288  caffe::Solver<>::Step()
+    @     0x7f0eeb1a9af4  caffe::Solver<>::Solve()
+    @           0x407c69  train()
+    @           0x4047db  main
+    @     0x7f0eea254ec5  (unknown)
+    @           0x404e15  (unknown)
+    @              (nil)  (unknown)

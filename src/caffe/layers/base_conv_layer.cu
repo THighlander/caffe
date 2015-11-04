@@ -5,13 +5,139 @@
 #include "caffe/util/im2col.hpp"
 #include "caffe/util/math_functions.hpp"
 #include "caffe/vision_layers.hpp"
+#include "caffe/fft/CuFFTWrapper.cuh"
+#include "caffe/fft/FBFFTHost.h"
+//#include "caffe/cuda/fbfft/FBFFTCommon.cuh"
+//#include "caffe/cuda/fbfft/FBFFT.h"
+//#include "caffe/cuda/fbfft/FBFFT2D-inl.cuh"
+//#include "caffe/cuda/fbfft/FBIFFT2D-inl.cuh"
+//#include "caffe/cuda/fbfft/FBFFTCommon.cuh"
 
+#include <cuda_runtime.h>
 #include <thrust/device_vector.h>
 #include <thrust/copy.h>
 #include <thrust/fill.h>
 
 namespace caffe {
 
+__global__ void hadamard_forward_with_sum(int n, float* image, float* kernel, float* output, int fftSize, 
+                                          int out_channels, int in_channels, int numDivisions)
+{
+  int index = 0;
+  int which_out_channel = 0;
+  int which_division = 0;
+  int k_index, im_index;
+
+
+  CUDA_KERNEL_LOOP(j, n)
+  {
+    //The 2* is due to the complex numbers being real, imaginary for each value
+    output[2*j] = output[2*j+1] = 0;
+    which_out_channel = j/(fftSize*fftSize*numDivisions*numDivisions);
+    which_division = (j/(fftSize*fftSize))%(numDivisions*numDivisions);
+    index = j%(fftSize*fftSize);
+
+
+    for (int in = 0; in <= in_channels/5; ++in)
+    {
+
+
+      k_index = 2*(which_out_channel*in_channels*fftSize*fftSize + 
+                   5*in*fftSize*fftSize +
+                   index);
+
+      im_index = 2*(5*in*fftSize*fftSize*numDivisions*numDivisions +
+                    which_division*fftSize*fftSize +
+                    index);
+
+      //float test = image[im_index+im_complexOffset];
+      //printf("Index: %d Value: %f\n", ( im_index+im_complexOffset), test);
+      
+      if(5*in < in_channels)
+      {
+        //printf("%din: \n", in);
+        output[2*j] += ((image[im_index] * kernel[k_index]) - (image[im_index+1] * kernel[k_index+1]));
+        output[2*j+1] += ((image[im_index] * kernel[k_index+1]) + (image[im_index+1] * kernel[k_index]));
+      }
+      else
+       break;
+      
+      if(5*in+1 < in_channels)
+      {
+        output[2*j] += ((image[im_index+(2*(1)*fftSize*fftSize*numDivisions*numDivisions)] * kernel[k_index+(2*(1)*fftSize*fftSize)]) - (image[im_index+(2*(1)*fftSize*fftSize*numDivisions*numDivisions)+1] * kernel[k_index+(2*(1)*fftSize*fftSize)+1]));
+        output[2*j+1] += ((image[im_index+(2*(1)*fftSize*fftSize*numDivisions*numDivisions)] * kernel[k_index+(2*(1)*fftSize*fftSize)+1]) + (image[im_index+(2*(1)*fftSize*fftSize*numDivisions*numDivisions)+1] * kernel[k_index+(2*(1)*fftSize*fftSize)]));
+      }
+      else
+      {
+        break;
+      }
+      if(5*in+2 < in_channels)
+      {
+        output[2*j] += ((image[im_index+(2*(2)*fftSize*fftSize*numDivisions*numDivisions)] * kernel[k_index+(2*(2)*fftSize*fftSize)]) - (image[im_index+(2*(2)*fftSize*fftSize*numDivisions*numDivisions)+1] * kernel[k_index+(2*(2)*fftSize*fftSize)+1]));
+        output[2*j+1] += ((image[im_index+(2*(2)*fftSize*fftSize*numDivisions*numDivisions)] * kernel[k_index+(2*(2)*fftSize*fftSize)+1]) + (image[im_index+(2*(2)*fftSize*fftSize*numDivisions*numDivisions)+1] * kernel[k_index+(2*(2)*fftSize*fftSize)]));
+      }
+      else
+        break; 
+      if(5*in+3 < in_channels)
+      {
+        output[2*j] += ((image[im_index+(2*(3)*fftSize*fftSize*numDivisions*numDivisions)] * kernel[k_index+(2*(3)*fftSize*fftSize)]) - (image[im_index+(2*(3)*fftSize*fftSize*numDivisions*numDivisions)+1] * kernel[k_index+(2*(3)*fftSize*fftSize)+1]));
+        output[2*j+1] += ((image[im_index+(2*(3)*fftSize*fftSize*numDivisions*numDivisions)] * kernel[k_index+(2*(3)*fftSize*fftSize)+1]) + (image[im_index+(2*(3)*fftSize*fftSize*numDivisions*numDivisions)+1] * kernel[k_index+(2*(3)*fftSize*fftSize)]));
+      }
+      else
+          break;
+      if(5*in+4 < in_channels)
+      {
+        output[2*j] += ((image[im_index+(2*(4)*fftSize*fftSize*numDivisions*numDivisions)] * kernel[k_index+(2*(4)*fftSize*fftSize)]) - (image[im_index+(2*(4)*fftSize*fftSize*numDivisions*numDivisions)+1] * kernel[k_index+(2*(4)*fftSize*fftSize)+1]));
+        output[2*j+1] += ((image[im_index+(2*(4)*fftSize*fftSize*numDivisions*numDivisions)] * kernel[k_index+(2*(4)*fftSize*fftSize)+1]) + (image[im_index+(2*(4)*fftSize*fftSize*numDivisions*numDivisions)+1] * kernel[k_index+(2*(4)*fftSize*fftSize)]));
+      }
+      else
+        break;
+       
+    }
+
+  }
+}
+
+__global__ void hadamard_forward(int n, float* image, float* kernel, float* output, int fftSize, 
+                                          int out_channels, int in_channels, int numDivisions)
+{
+  int index = 0;
+  int which_out_channel = 0;
+  int which_in_channel = 0;
+  int which_division = 0;
+  int k_index, im_index;
+
+  CUDA_KERNEL_LOOP(j, n)
+  {
+    which_out_channel = (j/(fftSize*fftSize*numDivisions*numDivisions))%(out_channels);
+    which_in_channel = (j/(fftSize*fftSize*numDivisions*numDivisions*out_channels));
+    which_division = (j/(fftSize*fftSize))%(numDivisions*numDivisions);
+    index = j%(fftSize*fftSize);
+
+    im_index = 2*(which_in_channel*fftSize*fftSize*numDivisions*numDivisions +
+                    which_division*fftSize*fftSize +
+                    index);
+
+    k_index = 2*(which_out_channel*in_channels*fftSize*fftSize + 
+                   which_in_channel*fftSize*fftSize +
+                   index);
+
+    output[2*j] = ((image[im_index] * kernel[k_index]) - (image[im_index+1] * kernel[k_index+1]));
+    output[(2*j)+1] = ((image[im_index] * kernel[k_index+1]) + (image[im_index+1] * kernel[k_index]));
+  }
+}
+
+__global__ void lookSee (int n, float* array, float scaler)
+{
+  for (int i = 0; i < n; ++i)
+  {
+    printf("%f\n", array[i]/scaler);
+
+  }
+}
+
+
+/* CuFFT Hadamard
 __global__ void hadamard_forward_with_sum(int n, cufftComplex* image, cufftComplex* kernel, cufftComplex* output, int fftSize, int out_channels, int in_channels)
 {
   int index = 0;
@@ -34,6 +160,113 @@ __global__ void hadamard_forward_with_sum(int n, cufftComplex* image, cufftCompl
     }
   }
 }
+*/
+
+template <typename Dtype>
+__global__ void overlap_and_crop(int n, float* input, Dtype* output, int fftSize, int overlapedSize, 
+                                  int kernelSize, int numDivisions, int extraInfo, int outSize, float scaler)
+{
+  int i, j;
+  //FFT size includes extra padding because of 'nice transforms'
+  int checkFFTsize = 2 * kernelSize -1;
+  int addedI, addedJ, currentIDivision, currentJDivision, whichChannel, startIDiv, startJDiv;
+  bool east, south;
+
+  startIDiv = startJDiv = currentIDivision = currentJDivision = addedI = addedJ = 0;
+
+  //loop goes through the overlaped output size
+
+
+  CUDA_KERNEL_LOOP(loop,n)
+  {
+    i = (loop%outSize)+extraInfo;
+    j = ((loop/outSize)%outSize)+extraInfo;
+    whichChannel = loop/(outSize*outSize);
+
+    addedI = i%kernelSize;
+    addedJ = j%kernelSize;
+    currentIDivision = i/kernelSize;
+    currentJDivision = j/kernelSize;
+
+    if(i/checkFFTsize > 0)
+    {
+      startIDiv = (i+kernelSize-1)/checkFFTsize;
+    }
+    else
+    {
+      startIDiv = 0;
+    }
+
+    if(j/checkFFTsize > 0)
+    {
+      startJDiv = (j+kernelSize-1)/checkFFTsize;
+    }
+    else
+    {
+      startJDiv = 0;
+    }
+
+    //Set intial output value
+    output[(whichChannel*outSize*outSize) + (j-extraInfo)*outSize +(i-extraInfo)] = 
+                                input[(whichChannel*fftSize*fftSize*numDivisions*numDivisions) +
+                                      (startJDiv*fftSize*fftSize*numDivisions) + 
+                                      (startIDiv*fftSize*fftSize) +
+                                      ((j-startJDiv*kernelSize)*fftSize) + 
+                                      (i-startIDiv*kernelSize)]/scaler;
+
+    east = south = false;
+
+    //Check if there is an overlap in the i direction (x)
+    if( !(i<kernelSize || overlapedSize - i <= kernelSize)  && i%kernelSize < kernelSize-1)
+    {
+      east = true;
+    }
+    
+    //Check if there is an overlap in the j direction (x)
+    if(!(j<kernelSize || overlapedSize - j <= kernelSize)  && j%kernelSize < kernelSize-1)
+    {
+      south = true;
+    }
+
+    if(east && south)
+    {
+      output[(whichChannel*outSize*outSize) + (j-extraInfo)*outSize +(i-extraInfo)] += 
+                                input[(whichChannel*fftSize*fftSize*numDivisions*numDivisions) +
+                                      (currentJDivision*fftSize*fftSize*numDivisions) + 
+                                      (currentIDivision*fftSize*fftSize) +
+                                      (addedJ* fftSize) + 
+                                      addedI]/scaler;
+      
+      output[(whichChannel*outSize*outSize) + (j-extraInfo)*outSize +(i-extraInfo)] += 
+                                input[(whichChannel*fftSize*fftSize*numDivisions*numDivisions) +
+                                      ((currentJDivision-1)*fftSize*fftSize*numDivisions) + 
+                                      (currentIDivision*fftSize*fftSize) +
+                                      ((addedJ+kernelSize)* fftSize) + 
+                                      addedI]/scaler;
+      
+      output[(whichChannel*outSize*outSize) + (j-extraInfo)*outSize +(i-extraInfo)] +=
+                                input[(whichChannel*fftSize*fftSize*numDivisions*numDivisions) +
+                                      (currentJDivision*fftSize*fftSize*numDivisions) + 
+                                      ((currentIDivision-1)*fftSize*fftSize) +
+                                      (addedJ* fftSize) + 
+                                      (addedI+kernelSize)]/scaler;
+                                      
+    }
+    else if(east || south)
+    {
+      output[(whichChannel*outSize*outSize) + (j-extraInfo)*outSize +(i-extraInfo)] += 
+                                input[(whichChannel*fftSize*fftSize*numDivisions*numDivisions) +
+                                      (currentJDivision*fftSize*fftSize*numDivisions) +
+                                      (currentIDivision*fftSize*fftSize) +
+                                      (addedJ* fftSize) + 
+                                      addedI]/scaler;
+    }
+    
+  }
+}
+
+
+
 
 template <typename Dtype>
 __global__ void crop_ouput(int n, float* fft_output, Dtype* output, int length, int fftSize, int offset, int out_channels)
@@ -43,7 +276,10 @@ __global__ void crop_ouput(int n, float* fft_output, Dtype* output, int length, 
   int size = length * length;
   CUDA_KERNEL_LOOP(index, n)
   {
-    output[index] = fft_output[((index/size)*fftSize*fftSize) + (((index/length)%length)*fftSize) + offset + (index%length)]/((float)(fftSize*fftSize));
+    output[index] = fft_output[((index/size)*fftSize*fftSize) + 
+                                (((index/length)%length)*fftSize) + 
+                                offset + 
+                                (index%length)]/((float)(fftSize*fftSize));
   }
 }
 
@@ -161,6 +397,7 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
         << "Inputs must have same width.";
   }
   // Shape the tops.
+  string currentType = this->type();
   compute_output_shape();
   for (int top_id = 0; top_id < top.size(); ++top_id) {
     top[top_id]->Reshape(num_, num_output_, height_out_, width_out_);
@@ -173,13 +410,47 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
     conv_in_height_ = height_;
     conv_in_width_ = width_;
     conv_out_spatial_dim_ = height_out_ * width_out_;
-    fftSize_ = conv_in_height_ + kernel_h_ - 1;
+
+    //Check the FFT size and make it a nice size, must handle proper padding and divisions still
+    
+    if(currentType.compare("ConvolutionOaA") == 0)
+    {
+      fftSize_ = kernel_h_+ kernel_h_ - 1;
+
+      if(fftSize_ < 4)
+      {
+        fftSize_=4;
+      }
+      else if (fftSize_ < 8)
+      {
+        fftSize_=8;
+      }
+      else if (fftSize_ < 16)
+      {
+        fftSize_ = 16;
+      }
+      else if (fftSize_ < 32)
+      {
+        fftSize_ = 32;
+      }
+      else if (fftSize_ < 64)
+      {
+        fftSize_ = 64;
+      }
+    }
+
   }
 
   kernel_dim_ = conv_in_channels_ * kernel_h_ * kernel_w_;
   weight_offset_ = conv_out_channels_ * kernel_dim_ / group_ / group_;
   col_offset_ = kernel_dim_ * conv_out_spatial_dim_ / group_;
   output_offset_ = conv_out_channels_ * conv_out_spatial_dim_ / group_;
+
+  int numDivisions = conv_in_height_/kernel_h_;
+
+  if(conv_in_height_/kernel_h_ != 0)
+    numDivisions++;
+
   // The im2col result buffer will only hold one image at a time to avoid
   // overly large memory usage. In the special case of 1x1 convolution
   // it goes lazily unused to save memory.
@@ -188,9 +459,12 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
 
   } else {
     col_buffer_.Reshape(1, kernel_dim_, height_out_, width_out_);
-    w_pad_buffer_.Reshape(1, conv_out_channels_*conv_in_channels_, fftSize_, fftSize_);
-    im_pad_buffer_.Reshape(1, conv_in_channels_, fftSize_, fftSize_);
-    o_pad_buffer_.Reshape(1, conv_out_channels_, fftSize_, fftSize_);
+    if(currentType.compare("ConvolutionOaA") == 0)
+    {
+      w_pad_buffer_.Reshape(1, conv_out_channels_*conv_in_channels_*numDivisions*numDivisions, fftSize_, fftSize_);
+      im_pad_buffer_.Reshape(1, conv_in_channels_*numDivisions*numDivisions, fftSize_, fftSize_);
+      o_pad_buffer_.Reshape(1, conv_out_channels_*numDivisions*numDivisions, fftSize_, fftSize_);
+    }
   }
   // Set up the all ones "bias multiplier" for adding biases by BLAS
   if (bias_term_) {
@@ -199,69 +473,25 @@ void BaseConvolutionLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
     caffe_set(bias_multiplier_.count(), Dtype(1),
         bias_multiplier_.mutable_cpu_data());
   }
-
-
-  #ifndef CPU_ONLY
-
-  //This currently breaks the testing I believe for CPU, because CPU_ONLY = false but CPU calculations are done.
-
-
-
-  fftSize_ = conv_in_height_ + kernel_h_ - 1;
-
-  //std::cout <<  "kernel_dim_ " << kernel_dim_ << std::endl;
-  int dims[2] = {fftSize_, fftSize_};
-
-  //std::cout << "This is when the plans are created!" << std::endl;
-
-
-  cufftPlanMany(&planR2CInDepth_, 2, dims,
-      dims, 1, fftSize_*fftSize_, //in dims
-      dims, 1, fftSize_*fftSize_, //out dims
-      CUFFT_R2C, conv_in_channels_);
-
-  cufftPlanMany(&planR2CNumK_, 2, dims,
-      dims, 1, fftSize_*fftSize_, //in dims
-      dims, 1, fftSize_*fftSize_, //out dims
-      CUFFT_R2C, conv_out_channels_*conv_in_channels_);
-  
-  cufftPlanMany(&planC2Rout_, 2, dims,
-      dims, 1, fftSize_*fftSize_, //in dims
-      dims, 1, fftSize_*fftSize_, //out dims
-      CUFFT_C2R, conv_out_channels_);
-
-
-  //Create the device vectors for the 
-  im_pad_buff_Complex = thrust::device_vector<cufftComplex>(fftSize_*fftSize_*conv_in_channels_);
-  w_pad_buff_Complex = thrust::device_vector<cufftComplex>(fftSize_*fftSize_*conv_in_channels_*conv_out_channels_);
-
-  cufftComplex complexZero;
-  complexZero.x = 0;
-  complexZero.y = 0;
-
-  //Initializes the output vector with 0's so that maybe we can += in CUDA for loops
-  out_pad_buff_Complex = thrust::device_vector<cufftComplex>(fftSize_*fftSize_*conv_out_channels_, complexZero);
-
-  #endif
+  if(currentType.compare("ConvolutionOaA") == 0)
+  {
+    im_Complex = thrust::device_vector<float>(fftSize_*fftSize_*conv_in_channels_*numDivisions*numDivisions*2);
+    w_Complex = thrust::device_vector<float>(fftSize_*fftSize_*conv_in_channels_*conv_out_channels_*2);
+    o_Complex = thrust::device_vector<float>(fftSize_*fftSize_*conv_out_channels_*numDivisions*numDivisions*2);
+  }
 }
 
 template <typename Dtype>
 void BaseConvolutionLayer<Dtype>::forward_cpu_gemm(const Dtype* input,
     const Dtype* weights, Dtype* output, bool skip_im2col) {
   const Dtype* col_buff = input;
+
   if (!is_1x1_) {
     if (!skip_im2col) {
       conv_im2col_cpu(input, col_buffer_.mutable_cpu_data());
     }
     col_buff = col_buffer_.cpu_data();
   }
-  
-  //std::cout << sizeof(output)/sizeof(Dtype)<< std::endl;
-  
-  //for (int i = 0; i < sizeof(output)/sizeof(Dtype); ++i)
-  //{
-    //std::cout << output[i] << std::endl;
-  //}
   
   for (int g = 0; g < group_; ++g) {
     caffe_cpu_gemm<Dtype>(CblasNoTrans, CblasNoTrans, conv_out_channels_ /
@@ -281,9 +511,9 @@ void BaseConvolutionLayer<Dtype>::forward_cpu_bias(Dtype* output,
       (Dtype)1., output);
 
   //for teting purposes only
-  cufftDestroy(planR2CInDepth_);
-  cufftDestroy(planR2CNumK_);
-  cufftDestroy(planC2Rout_);
+  //cufftDestroy(planR2CInDepth_);
+  //cufftDestroy(planR2CNumK_);
+  //cufftDestroy(planC2Rout_);
 }
 
 template <typename Dtype>
@@ -330,97 +560,11 @@ void BaseConvolutionLayer<Dtype>::backward_cpu_bias(Dtype* bias,
 
 #ifndef CPU_ONLY
 
+//Traditional Caffe
 template <typename Dtype>
 void BaseConvolutionLayer<Dtype>::forward_gpu_gemm(const Dtype* input,
     const Dtype* weights, Dtype* output, bool skip_im2col) {
 
-//Test for flushing errors
-cufftComplex complexZero;
-complexZero.x = 0;
-complexZero.y = 0;
-
-//Initializes the output vector with 0's so that maybe we can += in CUDA for loops
-thrust::fill(out_pad_buff_Complex.begin(), out_pad_buff_Complex.end(), complexZero);
-
-
-//Pad the input image
-cufftReal* im_pad_buff;
-conv_pad_im_gpu(input, im_pad_buffer_.mutable_gpu_data());
-im_pad_buff = im_pad_buffer_.mutable_gpu_data();
-
-cufftReal* w_pad_buff;
-conv_pad_w_gpu(weights, w_pad_buffer_.mutable_gpu_data());
-w_pad_buff = w_pad_buffer_.mutable_gpu_data();
-
-//Execute forward FFTs
-cufftExecR2C(planR2CInDepth_, im_pad_buff, thrust::raw_pointer_cast(&im_pad_buff_Complex[0]));
-cufftExecR2C(planR2CNumK_, w_pad_buff, thrust::raw_pointer_cast(&w_pad_buff_Complex[0]));
-//cudaDeviceSynchronize();
-
-//Time for the hadamard product with a sum over the conv_in_channels_ 
-int num_kernels = fftSize_ * fftSize_ * conv_out_channels_;
-
-hadamard_forward_with_sum<<<CAFFE_GET_BLOCKS(num_kernels),
-                           CAFFE_CUDA_NUM_THREADS>>>(num_kernels, 
-                            thrust::raw_pointer_cast(&im_pad_buff_Complex[0]), 
-                            thrust::raw_pointer_cast(&w_pad_buff_Complex[0]),
-                           thrust::raw_pointer_cast(&out_pad_buff_Complex[0]), fftSize_, conv_out_channels_, conv_in_channels_);
-
-//Inverse FFT 
-cufftExecC2R(planC2Rout_, thrust::raw_pointer_cast(&out_pad_buff_Complex[0]), o_pad_buffer_.mutable_gpu_data());
-float* o_pad_buff = o_pad_buffer_.mutable_gpu_data();
-
-/*
-float* test = o_pad_buffer_.mutable_cpu_data();
-for (int k = 0; k < conv_out_channels_; ++k)
-{
-  for (int i = 0; i < fftSize_; ++i)
-  {
-    for (int j = 0; j < fftSize_; ++j)
-    {
-      std::cout << test[(k*fftSize_ * fftSize_) + i*fftSize_ +j]/((float)fftSize_*fftSize_) << " ";
-    }
-    std::cout << std::endl;
-  }
-  std::cout << std::endl;
-}
-*/
-
-//Need crop the answer and put it at the start of the output blob
-int extraInfo = (fftSize_- height_out_)/2;
-
-num_kernels = conv_out_spatial_dim_*conv_out_channels_;
-crop_ouput<<<CAFFE_GET_BLOCKS(num_kernels), CAFFE_CUDA_NUM_THREADS>>>
-                          (num_kernels, o_pad_buff, output, height_out_, fftSize_, extraInfo,
-                            conv_out_channels_);
-
-//cufftDestroy(planR2CInDepth_);
-//cufftDestroy(planR2CNumK_);
-//cufftDestroy(planC2Rout_);
-
-//Dtype* test(sizeof(output)/sizeof(Dtype));
-//test = thrust::copy_n(output.begin(), sizeof(output)/sizeof(Dtype), test.begin());
-//std::cout << sizeof(output)/sizeof(Dtype) << std::endl;
-
-//for (int i = 0; i < sizeof(output)/sizeof(Dtype); ++i)
-  //{
-    //std::cout << test[i] << std::endl;
-  //}
-/*
-for (int k = 0; k < conv_out_channels_; ++k)
-{
-  for (int i = 0; i < height_out_; ++i)
-  {
-    for (int j = 0; j < width_out_; ++j)
-    {
-      //std::cout << output[0] << " ";//[i*width_out_ +j] << " ";
-    }
-    std::cout << std::endl;
-  }
-  std::cout << std::endl;
-}
-*/
-/*
   const Dtype* col_buff = input;
   if (!is_1x1_) {
     if (!skip_im2col) {
@@ -434,16 +578,105 @@ for (int k = 0; k < conv_out_channels_; ++k)
         (Dtype)1., weights + weight_offset_ * g, col_buff + col_offset_ * g,
         (Dtype)0., output + output_offset_ * g);
   }
-  */
+
 }
 
+//Convolutional OaA Forward Prop.
 template <typename Dtype>
-void BaseConvolutionLayer<Dtype>::cleanConvolution()
-{
-  cufftDestroy(planR2CInDepth_);
-  cufftDestroy(planR2CNumK_);
-  cufftDestroy(planC2Rout_);
+void BaseConvolutionLayer<Dtype>::forward_gpu_gemm_oaa(const Dtype* input,
+    const Dtype* weights, Dtype* output, bool skip_im2col) {
+
+int numDivisions = conv_in_height_/kernel_h_;
+
+if(conv_in_height_%kernel_h_ != 0)
+  numDivisions++;
+
+
+const int in_sizes[3] = {conv_in_channels_*numDivisions*numDivisions, fftSize_,fftSize_};
+const int c_in_sizes[4] = {conv_in_channels_*numDivisions*numDivisions, fftSize_,fftSize_, 2};
+const int out_sizes[3] = {conv_out_channels_*numDivisions*numDivisions, fftSize_,fftSize_};
+const int c_out_sizes[4] = {conv_out_channels_*numDivisions*numDivisions, fftSize_,fftSize_,2};
+const int w_sizes[3] = {conv_out_channels_*conv_in_channels_,fftSize_,fftSize_};
+const int c_w_sizes[4] = {conv_out_channels_*conv_in_channels_,fftSize_,fftSize_,2};
+
+//Im pad buffer must be made larger
+//Pad the input image
+float* im_pad_buff;
+conv_pad_im_gpu(input, numDivisions, im_pad_buffer_.mutable_gpu_data());
+im_pad_buff = im_pad_buffer_.mutable_gpu_data();
+
+float* w_pad_buff;
+conv_pad_w_gpu(weights, w_pad_buffer_.mutable_gpu_data());
+w_pad_buff = w_pad_buffer_.mutable_gpu_data();
+
+
+//device tensor(data, size)
+facebook::cuda::DeviceTensor<float, 3> im_space(im_pad_buff, in_sizes);
+facebook::cuda::DeviceTensor<float, 4> im_complex(thrust::raw_pointer_cast(&im_Complex[0]), c_in_sizes);
+//It should not use the buffer yet. We will see if we ever need it. 
+//If we do the buffer should be given a size and some memory
+facebook::cuda::DeviceTensor<float, 4>* buffer;
+facebook::cuda::DeviceTensor<float, 3> w_space(w_pad_buff, w_sizes);
+facebook::cuda::DeviceTensor<float, 4> w_complex(thrust::raw_pointer_cast(&w_Complex[0]), c_w_sizes);
+
+//lookSee<<<1,1>>>(fftSize_*fftSize_*numDivisions*numDivisions*conv_in_channels_, im_pad_buff, 1.0);
+//lookSee<<<1,1>>>(fftSize_*fftSize_*conv_in_channels_*conv_out_channels_, w_pad_buff, 1.0);
+
+
+facebook::deeplearning::torch::fbfft2dHost<1>(im_space, im_complex, buffer, 
+                facebook::deeplearning::torch::FFTParameters().withFbfft().forward(), 
+                0);
+
+//lookSee<<<1,1>>>(fftSize_*fftSize_*conv_in_channels_*2*numDivisions*numDivisions, im_complex.data(), 1.0);
+
+//Use the same stream for now
+facebook::deeplearning::torch::fbfft2dHost<1>(w_space, w_complex, buffer, 
+                facebook::deeplearning::torch::FFTParameters().withFbfft().forward(), 
+                0);
+
+//lookSee<<<1,1>>>(fftSize_*fftSize_*conv_out_channels_*conv_in_channels_*numDivisions*numDivisions*2, w_complex.data(), 1.0);
+
+
+facebook::cuda::fbfft::fbfft2D<1>(w_space, w_complex, 0);
+
+facebook::cuda::DeviceTensor<float, 4> out_complex(thrust::raw_pointer_cast(&o_Complex[0]), c_out_sizes);
+
+//In this case output size
+int num_kernels = fftSize_ * fftSize_ * conv_out_channels_*numDivisions*numDivisions;
+
+
+hadamard_forward_with_sum<<<CAFFE_GET_BLOCKS(num_kernels),
+                           CAFFE_CUDA_NUM_THREADS>>>(num_kernels, 
+                            im_complex.data(), w_complex.data(), out_complex.data(),
+                            fftSize_, conv_out_channels_, conv_in_channels_, numDivisions);
+
+//lookSee<<<1,1>>>(fftSize_*fftSize_*conv_out_channels_*2*numDivisions*numDivisions, out_complex.data(), 1.0);
+
+
+facebook::cuda::DeviceTensor<float, 3> out_space_dt(o_pad_buffer_.mutable_gpu_data(), out_sizes);
+
+
+//ifft still uses real, complex (dest, source)
+facebook::deeplearning::torch::fbfft2dHost<1>(out_space_dt, out_complex, buffer, 
+                facebook::deeplearning::torch::FFTParameters().withFbfft().inverse().normalize(false), 
+                0);
+
+//lookSee<<<1,1>>>(fftSize_*fftSize_*conv_out_channels_*numDivisions*numDivisions, out_space_dt.data(), 16.0);
+
+int overlap = kernel_h_-1;
+int overlapedSize = ((2*kernel_h_-1)*numDivisions) - (overlap*(numDivisions-1));
+int extraInfo = (overlapedSize-conv_in_height_)/2;
+
+num_kernels = conv_out_channels_*height_out_*height_out_;
+
+overlap_and_crop<<<CAFFE_GET_BLOCKS(num_kernels), CAFFE_CUDA_NUM_THREADS>>>
+                            (num_kernels, out_space_dt.data(), output, 
+                              fftSize_, overlapedSize, kernel_h_, numDivisions, extraInfo, height_out_, (float)fftSize_*fftSize_);
+
+//lookSee<<<1,1>>>(conv_out_channels_*height_out_*height_out_, thrust::raw_pointer_cast(&tempOutput[0]), 1.0);
+
 }
+
 
 template <typename Dtype>
 void BaseConvolutionLayer<Dtype>::forward_gpu_bias(Dtype* output,
@@ -494,15 +727,6 @@ void BaseConvolutionLayer<Dtype>::backward_gpu_bias(Dtype* bias,
       input, bias_multiplier_.gpu_data(), 1., bias);
 }
 
-//May not be the optimal loction for this, however it works so for development purposes we will leave it here.
-template <typename Dtype>
-BaseConvolutionLayer<Dtype>::~BaseConvolutionLayer()
-{
-  //destroy the cufft plans created by the convoltuional layer in vision_layers.hpp
-  cufftDestroy(planR2CInDepth_);
-  cufftDestroy(planR2CNumK_);
-  cufftDestroy(planC2Rout_);
-}
 #endif
 
 INSTANTIATE_CLASS(BaseConvolutionLayer);

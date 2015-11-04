@@ -12,9 +12,9 @@ void im2col_cpu(const Dtype* data_im, const int channels,
     const int stride_w, Dtype* data_col);
 
 template <typename Dtype>
-void pad_gpu(const Dtype* data_im, const int channels,
+void pad_gpu(const Dtype* data_im, const int im_size, const int channels,
     const int height, const int width,const int pad_h, 
-    const int pad_w, float* data_col, bool reverse);
+    const int pad_w, int numDivisions, float* data_col, bool reverse);
 
 template <typename Dtype>
 void col2im_cpu(const Dtype* data_col, const int channels,

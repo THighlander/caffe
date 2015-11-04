@@ -1,6 +1,6 @@
 
 #OaA
-This repo is devoted to adding the overlap and add technique to GPU convolutions in CAFFE. The current bottleneck of this is cuFFT's planning phase. Efforts are being made to fix this and improve the performance of FFTs in CAFFE.
+This repo is devoted to adding the overlap and add technique to GPU convolutions in CAFFE. This was accomplished by adding a new layer to CAFFE. “ConvolutionOaA” will use fbFFT to compute convolutions using the overlap-and-add technique in CAFFE. The layer uses the same parameters as the traditional Convolution layer. Limited testing has been done, but OaA seems to benefit larger layers with mid sized (8-16) kernels. For a single convolution layer with 100 inputs of size 256 x 256 and a kernel of size 16 x 16 traditional CAFFE takes 63.4 seconds on a NVIDIA TITAN X to compute 100 forward propagations while ConvolutionOaA takes 11.6 seconds. The current implementation requires a computation complexity at or above 3.5, and a max kernel size of 16 x 16. Future work would include polishing the code for better performance and allowing for larger than 16x16 kernels. If this code is used for your research please cite our [BMVC paper] (http://bmvc2015.swansea.ac.uk/proceedings/papers/paper160/paper160.pdf) , and [fbFFT] (http://arxiv.org/pdf/1412.7580v3.pdf).
 
 # Caffe
 
